@@ -61,17 +61,6 @@ body{
   letter-spacing:.02em; color:var(--ink-soft);
 }
 
-/* ---------- hero ---------- */
-.hero-plate{margin:0}
-.hero{aspect-ratio:16/9;max-height:58vh}
-.cap{
-  display:flex; align-items:baseline; gap:16px;
-  font-family:var(--mono); font-size:11px; letter-spacing:.16em;
-  text-transform:uppercase; color:var(--ink-soft);
-  padding-top:12px;
-}
-.cap::after{content:"";flex:1;height:1px;background:var(--rule);transform:translateY(-4px)}
-
 /* ---------- masthead ---------- */
 .masthead{
   display:grid; grid-template-columns:minmax(0,1fr) auto;
@@ -106,7 +95,7 @@ article{
   padding:38px 0; border-top:1px solid var(--rule);
 }
 article:first-of-type{border-top:none;padding-top:0}
-.shot-project{aspect-ratio:4/3;border:1px solid var(--rule)}
+.shot-project{aspect-ratio:4/3;border:1px solid var(--rule);object-fit:contain}
 h2{font-size:23px;font-weight:600;letter-spacing:-.01em;margin:-4px 0 8px}
 .problem{margin:0;color:var(--ink-soft);max-width:60ch}
 
@@ -153,7 +142,6 @@ a:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
 @media (max-width:620px){
   body{font-size:16px}
   .wrap{padding:0 20px}
-  .hero{aspect-ratio:3/2;max-height:52vh}
   .label{margin:52px 0 28px}
   .figures dd{font-size:16px}
   footer{padding-bottom:64px}
@@ -164,13 +152,6 @@ a:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
 </style>
 </head>
 <body>
-
-<figure class="hero-plate">
-  <img class="shot hero" src="img/hero.jpg" width="2400" height="1350"
-       fetchpriority="high" decoding="async"
-       alt="Assembled miniature passive pressure-relief valve, photographed in wide crop.">
-  <figcaption class="wrap cap">Miniature passive pressure-relief valve</figcaption>
-</figure>
 
 <div class="wrap">
 
@@ -194,6 +175,25 @@ a:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
   <h2 class="label">Selected work</h2>
 
   <article>
+    <img class="shot shot-project" src="img/AMS_Hero_Pic.png" width="1256" height="1193"
+         loading="lazy" decoding="async"
+         alt="AMS-02 Layer 0 integration fixture holding a silicon tracker subassembly.">
+    <div>
+      <h2>AMS-02 Layer 0 integration tooling</h2>
+      <p class="problem">
+        Alignment and adhesive bonding tooling for the silicon tracker upgrade of an ISS particle-physics
+        detector, holding fragile sensor subassemblies to position across a fixture over a metre wide.
+      </p>
+      <dl class="figures">
+        <div><dt>Positioning across 1100 × 1200 mm</dt><dd>~100 µm</dd></div>
+        <div><dt>Worst-case alignment error</dt><dd>120 → 93 µm</dd></div>
+        <div><dt>Predicted self-weight deformation</dt><dd>62 → 26 µm</dd></div>
+      </dl>
+      <a class="go" href="pdf/ams02.pdf">Read the case study (PDF)</a>
+    </div>
+  </article>
+
+  <article>
     <img class="shot shot-project" src="img/PRV_Exploded_View_Render.png" width="1946" height="2402"
          loading="lazy" decoding="async"
          alt="Detail view of the miniature pressure-relief valve assembly and its internal parts.">
@@ -210,25 +210,6 @@ a:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
         <div><dt>Seal failure identified</dt><dd>−30 ± 3 °C</dd></div>
       </dl>
       <a class="go" href="pdf/prv.pdf">Read the case study (PDF)</a>
-    </div>
-  </article>
-
-  <article>
-    <img class="shot shot-project" src="img/Enclosure_Exploded_View_Compressed.png" width="5760" height="3240"
-         loading="lazy" decoding="async"
-         alt="3D-printed FD-11 radiosonde enclosure shells.">
-    <div>
-      <h2>FD-11 radiosonde enclosure</h2>
-      <p class="problem">
-        Attainable altitude is set by payload mass, so every gram in the shell costs ceiling. Seven
-        iterations from first print to frozen design and outsourced production.
-      </p>
-      <dl class="figures">
-        <div><dt>Achieved, against 8 g budget</dt><dd>6 g</dd></div>
-        <div><dt>Nominal wall thickness</dt><dd>0.6 mm</dd></div>
-        <div><dt>Launch campaigns flown</dt><dd>20+</dd></div>
-      </dl>
-      <a class="go" href="pdf/enclosure.pdf">Read the case study (PDF)</a>
     </div>
   </article>
 
@@ -253,21 +234,21 @@ a:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
   </article>
 
   <article>
-    <img class="shot shot-project" src="img/AMS_Hero_Pic.png" width="1256" height="1193"
+    <img class="shot shot-project" src="img/Enclosure_Exploded_View_Compressed.png" width="5760" height="3240"
          loading="lazy" decoding="async"
-         alt="AMS-02 Layer 0 integration fixture holding a silicon tracker subassembly.">
+         alt="3D-printed FD-11 radiosonde enclosure shells.">
     <div>
-      <h2>AMS-02 Layer 0 integration tooling</h2>
+      <h2>FD-11 radiosonde enclosure</h2>
       <p class="problem">
-        Alignment and adhesive bonding tooling for the silicon tracker upgrade of an ISS particle-physics
-        detector, holding fragile sensor subassemblies to position across a fixture over a metre wide.
+        Attainable altitude is set by payload mass, so every gram in the shell costs ceiling. Seven
+        iterations from first print to frozen design and outsourced production.
       </p>
       <dl class="figures">
-        <div><dt>Positioning across 1100 × 1200 mm</dt><dd>~100 µm</dd></div>
-        <div><dt>Worst-case alignment error</dt><dd>120 → 93 µm</dd></div>
-        <div><dt>Predicted self-weight deformation</dt><dd>62 → 26 µm</dd></div>
+        <div><dt>Achieved, against 8 g budget</dt><dd>6 g</dd></div>
+        <div><dt>Nominal wall thickness</dt><dd>0.6 mm</dd></div>
+        <div><dt>Launch campaigns flown</dt><dd>20+</dd></div>
       </dl>
-      <a class="go" href="pdf/ams02.pdf">Read the case study (PDF)</a>
+      <a class="go" href="pdf/enclosure.pdf">Read the case study (PDF)</a>
     </div>
   </article>
 
