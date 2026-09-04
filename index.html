@@ -91,11 +91,11 @@ h1{
 /* ---------- projects ---------- */
 article{
   display:grid; grid-template-columns:minmax(0,42fr) minmax(0,58fr);
-  gap:38px; align-items:start;
+  gap:38px; align-items:stretch;
   padding:38px 0; border-top:1px solid var(--rule);
 }
 article:first-of-type{border-top:none;padding-top:0}
-.shot-project{aspect-ratio:4/3;border:1px solid var(--rule);object-fit:contain}
+.shot-project{height:100%;aspect-ratio:auto;border:1px solid var(--rule);object-fit:cover}
 h2{font-size:23px;font-weight:600;letter-spacing:-.01em;margin:-4px 0 8px}
 .problem{margin:0;color:var(--ink-soft);max-width:60ch}
 
@@ -181,8 +181,9 @@ a:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
     <div>
       <h2>AMS-02 Layer 0 integration tooling</h2>
       <p class="problem">
-        Alignment and adhesive bonding tooling for the silicon tracker upgrade of an ISS particle-physics
-        detector, holding fragile sensor subassemblies to position across a fixture over a metre wide.
+        Precision alignment and adhesive-bonding tooling for the AMS-02 Layer 0 silicon-tracker upgrade, 
+        part of the ISS-based AMS-02 particle-physics programme.Controlled fragile sensor-subassembly 
+        positioning to ~100 µm across a 1100 × 1200 mm integration fixture.
       </p>
       <dl class="figures">
         <div><dt>Positioning across 1100 × 1200 mm</dt><dd>~100 µm</dd></div>
@@ -200,9 +201,10 @@ a:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
     <div>
       <h2>Miniature passive pressure-relief valve</h2>
       <p class="problem">
-        Superpressure balloons heat in sunlight and can exceed their envelope limit. This valve vents
-        helium passively above a set pressure and reseals as it falls — with only a few newtons of
-        actuation force available at low-kPa differentials.
+        Superpressure balloons heat in sunlight and can exceed their envelope limit. 
+        This valve vents helium passively above
+         a set pressure and reseals as it falls — with only a few newtons of actuation 
+         force available at low-kPa differentials
       </p>
       <dl class="figures">
         <div><dt>Adjustable cracking range</dt><dd>1.4–6.5 kPa</dd></div>
@@ -220,9 +222,10 @@ a:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
     <div>
       <h2>Balloon management system — fluidic test platform</h2>
       <p class="problem">
-        Valve leak rates sat far below the flowmeter floor, so the measurement had to change before
-        the hardware could. A Python test rig with closed-loop differential-pressure control against
-        ambient drift, built to characterise what the instruments could not read directly.
+        Manual balloon and valve testing was too slow and sensitive to ambient-pressure drift.
+         I developed a fluidic test platform combining pumps, solenoid routing, 
+         pressure and flow instrumentation, and Python/PyQt5 automation for repeatable pressure, 
+         leak and endurance testing.
       </p>
       <dl class="figures">
         <div><dt>Samples per test run</dt><dd>20k+</dd></div>
@@ -235,7 +238,6 @@ a:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
 
   <article>
     <img class="shot shot-project" src="img/Enclosure_Exploded_View_Compressed.png" width="5760" height="3240"
-         style="aspect-ratio:16/9"
          loading="lazy" decoding="async"
          alt="3D-printed FD-11 radiosonde enclosure shells.">
     <div>
