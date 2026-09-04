@@ -207,8 +207,8 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-off
 .media--square img{object-fit:contain;padding:28px}
 .media--photo{aspect-ratio:4/5}
 .media--photo img{object-fit:cover;object-position:center 38%}
-.media--band{aspect-ratio:4/3}
-.media--band img{object-fit:cover;object-position:center}
+.media--band{aspect-ratio:4/3; background:var(--canvas)}
+.media--band img{object-fit:contain; padding:28px}
 
 .reveal-init{opacity:0; transform:translateY(16px)}
 .reveal-in{opacity:1; transform:translateY(0); transition:opacity .55s ease,transform .55s ease}
