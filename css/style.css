@@ -207,13 +207,8 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-off
 .media--square img{object-fit:contain;padding:28px}
 .media--photo{aspect-ratio:4/5}
 .media--photo img{object-fit:cover;object-position:center 38%}
-
-/* enclosure (04) breaks out of the two-column grid into a full-width band */
-.project--band .wrap{display:block}
-.project--band .project__media{width:100%; margin-bottom:44px}
-.project--band .project__band-body{max-width:64ch}
-.media--band{aspect-ratio:2400/1350; background:var(--canvas)}
-.media--band img{object-fit:contain;padding:clamp(16px,2.6vw,40px)}
+.media--band{aspect-ratio:4/3}
+.media--band img{object-fit:cover;object-position:center}
 
 .reveal-init{opacity:0; transform:translateY(16px)}
 .reveal-in{opacity:1; transform:translateY(0); transition:opacity .55s ease,transform .55s ease}
