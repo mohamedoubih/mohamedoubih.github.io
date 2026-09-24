@@ -1,0 +1,14 @@
+PIN PULLER LAB
+
+1. Extract the ZIP (on Windows: right-click > Extract All).
+2. Open the extracted pin-puller-lab folder.
+3. Double-click index.html to open the app in your browser.
+
+Keep all files in the same folder. No installation or local server is needed.
+The animation works offline. The original patent links need internet access.
+
+Use Play release, the stage buttons, or the slider to explore the movement.
+Click a coloured part for its explanation.
+
+Based on US5771742A, Figure 1 (TiNi Alloy Company).
+Educational schematic; not a verified Dcubed internal design or a physics simulation.

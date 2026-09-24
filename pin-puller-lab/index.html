@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#f4f6fa">
+  <title>Pin Puller Lab — See the release</title>
+  <meta name="description" content="Explore an SMA-triggered pin puller in a simple interactive section. Move through the release, inspect each part, and see what unlocks the pin.">
+  <link rel="icon" href="./icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./style.css">
+  <script src="./motion.js" defer></script>
+  <script src="./app.js" defer></script>
+</head>
+<body>
+  <main class="app">
+    <header class="masthead">
+      <div>
+        <p class="eyebrow">MECHANISM STUDY <span>01</span></p>
+        <h1>Pin Puller Lab</h1>
+        <p class="subtitle">A small trigger releases a spring-loaded pin.</p>
+      </div>
+      <a class="source-link" href="https://patentimages.storage.googleapis.com/4b/d5/59/13af8c13587cde/US5771742.pdf#page=2" target="_blank" rel="noopener noreferrer">Original drawing <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10"/></svg></a>
+    </header>
+
+    <nav class="stage-nav" aria-label="Release stages">
+      <button class="stage-tab active" data-stage="0" aria-current="step"><span class="stage-number">01</span><span>Locked</span><span class="stage-line"></span></button>
+      <button class="stage-tab" data-stage="1"><span class="stage-number">02</span><span>Trigger</span><span class="stage-line"></span></button>
+      <button class="stage-tab" data-stage="2"><span class="stage-number">03</span><span>Unlock</span><span class="stage-line"></span></button>
+      <button class="stage-tab" data-stage="3"><span class="stage-number">04</span><span>Release</span></button>
+    </nav>
+
+    <div class="workspace">
+      <section class="viewer" aria-label="Interactive section and animation controls">
+        <div class="viewer-top"><span class="view-label">SECTION VIEW</span><label class="label-control"><input id="labels-toggle" type="checkbox" checked><span>Labels</span></label></div>
+        <div class="drawing-area">
+          <svg id="mechanism" viewBox="0 0 840 660" aria-labelledby="drawing-title drawing-desc">
+            <title id="drawing-title">SMA-triggered pin puller, simplified section</title>
+            <desc id="drawing-desc">The locking balls prevent the main spring from retracting the blue pin. The red SMA wire pulls the purple latch down; the balls move into its recess and the pin retracts downward. Select a coloured part to learn about it.</desc>
+            <defs>
+              <pattern id="grid" width="24" height="24" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r=".8" fill="#d6dde7"/></pattern>
+              <pattern id="housing-hatch" width="9" height="9" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><path d="M0 0V9" stroke="#aab6c6" stroke-width="1"/></pattern>
+              <pattern id="fixed-hatch" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><path d="M0 0V8" stroke="#bad4d1" stroke-width="1.2"/></pattern>
+              <marker id="arrow-gold" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0 10 5 0 10z" fill="#b77910"/></marker>
+              <marker id="arrow-blue" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0 10 5 0 10z" fill="#2862bf"/></marker>
+              <marker id="arrow-purple" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0 10 5 0 10z" fill="#8154b5"/></marker>
+              <marker id="arrow-orange" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0 10 5 0 10z" fill="#c56627"/></marker>
+            </defs>
+            <rect width="840" height="660" fill="url(#grid)" opacity=".55"/>
+            <path d="M420 30V644" stroke="#cbd3e0" stroke-dasharray="7 6"/>
+            <g class="retained-part" aria-hidden="true">
+              <path d="M325 100H360V151H325zM480 100H515V151H480z" fill="#e4e8ef" stroke="#9eabbc" stroke-width="1.5"/>
+              <path d="M325 100H360V151H325zM480 100H515V151H480z" fill="url(#housing-hatch)"/>
+              <path d="M519 124H584" class="leader"/><text x="596" y="128" class="diagram-label">Retained part</text>
+            </g>
+            <g transform="translate(420 0)">
+              <g class="part" data-part="housing" role="button" tabindex="0" aria-label="Inspect housing, fixed">
+                <title>Housing — fixed</title>
+                <path class="part-shape" d="M-142 178H-60V198H-120V614H120V198H60V178H142V640H-142Z" fill="#edf0f5" stroke="#8291a5" stroke-width="2"/>
+                <path d="M-142 178H-60V198H-120V614H120V198H60V178H142V640H-142Z" fill="url(#housing-hatch)" pointer-events="none"/>
+              </g>
+              <g class="part" data-part="keeper" role="button" tabindex="0" aria-label="Inspect fixed ball keeper, part 34">
+                <title>Ball keeper 34 — fixed guide</title>
+                <path class="part-shape" d="M-40 252H-26V303H-40ZM26 252H40V303H26ZM-40 337H-26V558H-6V614H-40ZM26 337H40V614H6V558H26Z" fill="#d7eeea" stroke="#25897d" stroke-width="2"/>
+                <path d="M-40 252H-26V303H-40ZM26 252H40V303H26ZM-40 337H-26V558H-6V614H-40ZM26 337H40V614H6V558H26Z" fill="url(#fixed-hatch)" pointer-events="none"/>
+              </g>
+              <g class="part" data-part="main-spring" role="button" tabindex="0" aria-label="Inspect main compression spring, part 22">
+                <title>Main spring 22 — supplies the pull</title>
+                <path id="spring-hit-left" class="hit-line"/>
+                <path id="spring-hit-right" class="hit-line"/>
+                <path id="main-spring-left" class="part-shape coil main-coil"/>
+                <path id="main-spring-right" class="part-shape coil main-coil"/>
+              </g>
+              <g id="moving-pin" class="part" data-part="pin" role="button" tabindex="0" aria-label="Inspect retracting pin, part 12">
+                <title>Pin 12 — retracts downward</title>
+                <path class="part-shape" d="M-54 72Q-54 62-44 62H44Q54 62 54 72V215H90V352H104V372H66V328.201L42 304.201V104H-42V304.201L-66 328.201V372H-104V352H-90V215H-54Z" fill="#d8e6fd" stroke="#3d71bd" stroke-width="2.3"/>
+                <path d="M-82 244V329M82 244V329" stroke="#a4c3f1" stroke-width="1.4" pointer-events="none"/>
+              </g>
+              <g class="part" data-part="wire" role="button" tabindex="0" aria-label="Inspect SMA wire, part 50">
+                <title>SMA wire 50 — contracts when heated</title>
+                <path id="wire-hit" class="hit-line"/>
+                <path id="sma-wire" class="part-shape" fill="none" stroke="#c45562" stroke-width="5" stroke-linecap="round"/>
+                <circle cx="0" cy="600" r="5" fill="#b23b49"/>
+                <path d="M-12 606H12" stroke="#b23b49" stroke-width="2"/>
+              </g>
+              <g class="part" data-part="reset-spring" role="button" tabindex="0" aria-label="Inspect reset spring, part 58">
+                <title>Reset spring 58 — compressed during release</title>
+                <path id="reset-hit" class="hit-line"/>
+                <path id="reset-coil" class="part-shape coil reset-coil"/>
+              </g>
+              <g id="moving-latch" class="part" data-part="latch" role="button" tabindex="0" aria-label="Inspect central latch and release recess, part 38">
+                <title>Latch 38 — its recess makes room for the balls</title>
+                <path class="part-shape" d="M-24 214H24V230L10 252V302L24 320V442H-24V320L-10 302V252L-24 230Z" fill="#e7dcf8" stroke="#8154b5" stroke-width="2.1"/>
+                <path d="M-6 257V294M6 257V294" stroke="#bea4e1" stroke-width="1" pointer-events="none"/>
+              </g>
+              <g class="part" data-part="balls" role="button" tabindex="0" aria-label="Inspect the two locking balls, parts 28 and 30">
+                <title>Locking balls 28 and 30 — move inward in fixed holes</title>
+                <circle id="left-ball" class="part-shape" cx="-38" cy="320" r="14" fill="#f4c69b" stroke="#c56627" stroke-width="2"/>
+                <circle id="right-ball" class="part-shape" cx="38" cy="320" r="14" fill="#f4c69b" stroke="#c56627" stroke-width="2"/>
+              </g>
+              <g id="force-arrows" pointer-events="none">
+                <path id="spring-force-left" d="M-151 241V299" stroke="#b77910" stroke-width="2.5" marker-end="url(#arrow-gold)" fill="none"/>
+                <path id="spring-force-right" d="M151 241V299" stroke="#b77910" stroke-width="2.5" marker-end="url(#arrow-gold)" fill="none"/>
+                <text x="163" y="268" class="small-label" fill="#96620d">Spring force</text>
+              </g>
+              <g id="latch-arrow" pointer-events="none"><path d="M15 379V419" fill="none" stroke="#8154b5" stroke-width="2.5" marker-end="url(#arrow-purple)"/></g>
+              <g id="ball-arrows" pointer-events="none"><path id="left-ball-arrow" fill="none" stroke="#c56627" stroke-width="2.5" marker-end="url(#arrow-orange)"/><path id="right-ball-arrow" fill="none" stroke="#c56627" stroke-width="2.5" marker-end="url(#arrow-orange)"/></g>
+              <g id="pin-arrow" pointer-events="none"><path d="M0 164V202" fill="none" stroke="#2862bf" stroke-width="3" marker-end="url(#arrow-blue)"/></g>
+              <g id="release-clearance" pointer-events="none"><path d="M-60 163H60" stroke="#2862bf" stroke-dasharray="4 4" stroke-width="1.5"/></g>
+            </g>
+            <g id="diagram-labels" aria-hidden="true">
+              <g class="part-label" data-label="pin"><path id="pin-leader" class="leader"/><circle id="pin-dot" r="3" fill="#3d71bd"/><text x="107" y="102" class="diagram-label">Pin <tspan class="part-number">12</tspan></text></g>
+              <g class="part-label" data-label="housing"><path d="M160 186H220L278 202" class="leader"/><circle cx="278" cy="202" r="3" fill="#8291a5"/><text x="107" y="180" class="diagram-label">Housing</text></g>
+              <g class="part-label" data-label="main-spring"><path id="main-leader" class="leader"/><circle id="main-dot" r="3" fill="#b77910"/><text x="107" y="260" class="diagram-label">Main spring <tspan class="part-number">22</tspan></text></g>
+              <g class="part-label" data-label="balls"><path id="balls-leader" class="leader"/><circle id="balls-dot" r="3" fill="#c56627"/><text x="626" y="326" class="diagram-label">Locking balls <tspan class="part-number">28 / 30</tspan></text></g>
+              <g class="part-label" data-label="latch"><path id="latch-leader" class="leader"/><circle id="latch-dot" r="3" fill="#8154b5"/><text x="107" y="406" class="diagram-label">Latch <tspan class="part-number">38</tspan></text></g>
+              <g class="part-label" data-label="keeper"><path d="M621 457H592L460 438" class="leader"/><circle cx="460" cy="438" r="3" fill="#25897d"/><text x="626" y="461" class="diagram-label">Ball keeper <tspan class="part-number">34</tspan></text></g>
+              <g class="part-label" data-label="reset-spring"><path id="reset-leader" class="leader"/><circle id="reset-dot" r="3" fill="#ab4f90"/><text x="107" y="505" class="diagram-label">Reset spring <tspan class="part-number">58</tspan></text></g>
+              <g class="part-label" data-label="wire"><path id="wire-leader" class="leader"/><circle id="wire-dot" r="3" fill="#c45562"/><text x="626" y="565" class="diagram-label">SMA wire <tspan class="part-number">50</tspan></text></g>
+            </g>
+          </svg>
+        </div>
+        <div class="drawing-foot"><span>Click a coloured part to inspect it.</span><span>SMA contraction exaggerated</span></div>
+        <div class="transport">
+          <div class="transport-row">
+            <div class="playback-buttons">
+              <button id="previous" class="icon-button" aria-label="Previous stage" title="Previous stage"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 6 9 12l6 6"/></svg></button>
+              <button id="play" class="play-button"><svg id="play-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m8 5 11 7-11 7Z"/></svg><span id="play-text">Play release</span></button>
+              <button id="next" class="icon-button" aria-label="Next stage" title="Next stage"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></button>
+            </div>
+            <button id="restart" class="restart-button" title="Rewinds the illustration; this does not show a physical reset"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 10a8 8 0 1 1 1.6 7M4 4v6h6"/></svg><span>Return to start</span></button>
+          </div>
+          <label class="sr-only" for="progress">Scrub through the release sequence</label>
+          <input id="progress" class="scrubber" type="range" min="0" max="1000" step="1" value="0" aria-valuetext="Locked, start of release sequence">
+          <div class="scrub-labels"><span>Locked</span><span>Drag to explore</span><span>Released</span></div>
+        </div>
+      </section>
+
+      <aside class="explanation" aria-label="Stage and part explanations">
+        <section class="stage-card" aria-labelledby="stage-title">
+          <p id="stage-kicker" class="eyebrow">01 / LOCKED</p>
+          <h2 id="stage-title">Ready, but held.</h2>
+          <p id="stage-description">The main spring is compressed. The two balls block the pin’s inner shoulder, stopping it from retracting.</p>
+          <p id="stage-key" class="key-point">The latch keeps the balls pushed outward.</p>
+        </section>
+        <section class="parts-section" aria-labelledby="parts-title">
+          <div class="parts-heading"><h2 id="parts-title">Explore the parts</h2><span>8 parts</span></div>
+          <div id="parts-list" class="parts-list"></div>
+          <div id="part-detail" class="part-detail" aria-live="polite">
+            <p class="detail-kicker" id="part-category">HOW IT WORKS</p>
+            <h3 id="part-title">Follow the release.</h3>
+            <p id="part-description">Play the sequence or step through it. Select any part to see what it does.</p>
+          </div>
+        </section>
+      </aside>
+    </div>
+
+    <footer class="page-footer">
+      <p>Based on <a href="https://patents.google.com/patent/US5771742A/en" target="_blank" rel="noopener noreferrer">US5771742A, Fig. 1</a> · TiNi Alloy Company<br>A generic example; not a verified Dcubed design.</p>
+      <p>Schematic motion, not a physics simulation. Geometry and timing are illustrative. “Return to start” rewinds the illustration.</p>
+    </footer>
+    <p id="announcement" class="sr-only" role="status" aria-live="polite"></p>
+    <noscript><p class="noscript">Enable JavaScript to play and explore the release sequence.</p></noscript>
+  </main>
+</body>
+</html>
