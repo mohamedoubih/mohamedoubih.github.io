@@ -3,31 +3,32 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Mohamed Oubih — Mechanical Engineer, Aerospace Hardware</title>
-<meta name="description" content="Mechanical engineering portfolio: miniature pressure-relief valve, AMS-02 integration tooling, fluidic test platform, ultralight radiosonde enclosure.">
+<title>Mohamed Oubih — Mechanical Engineer · Hardware Development</title>
+<meta name="description" content="Mechanical engineer working on mechanical design, prototypes and testing: a miniature pressure-relief valve, an automated pneumatic test platform, AMS-02 integration tooling and an ultralight radiosonde enclosure.">
 <link rel="canonical" href="https://mohamedoubih.github.io/">
 
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://mohamedoubih.github.io/">
 <meta property="og:site_name" content="Mohamed Oubih">
-<meta property="og:title" content="Mohamed Oubih — Mechanical Engineer, Aerospace Hardware">
-<meta property="og:description" content="Mechanical engineering portfolio: miniature pressure-relief valve, AMS-02 integration tooling, fluidic test platform, ultralight radiosonde enclosure.">
+<meta property="og:title" content="Mohamed Oubih — Mechanical Engineer · Hardware Development">
+<meta property="og:description" content="Mechanical design, prototypes and testing: a miniature pressure-relief valve, an automated pneumatic test platform, AMS-02 integration tooling and an ultralight radiosonde enclosure.">
 <meta property="og:image" content="https://mohamedoubih.github.io/img/og.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Mohamed Oubih, mechanical engineer — case studies in mechanisms, sealing and test systems.">
+<meta property="og:image:alt" content="Mohamed Oubih, mechanical engineer — mechanical design, prototypes and testing.">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Mohamed Oubih — Mechanical Engineer, Aerospace Hardware">
-<meta name="twitter:description" content="Mechanical engineering portfolio: miniature pressure-relief valve, AMS-02 integration tooling, fluidic test platform, ultralight radiosonde enclosure.">
+<meta name="twitter:title" content="Mohamed Oubih — Mechanical Engineer · Hardware Development">
+<meta name="twitter:description" content="Mechanical design, prototypes and testing: a miniature pressure-relief valve, an automated pneumatic test platform, AMS-02 integration tooling and an ultralight radiosonde enclosure.">
 <meta name="twitter:image" content="https://mohamedoubih.github.io/img/og.jpg">
 
-<link rel="icon" href="favicon.ico" sizes="any">
+<!-- No favicon file exists; an empty icon stops browsers requesting a missing /favicon.ico. -->
+<link rel="icon" href="data:,">
 <meta name="theme-color" content="#faf9f6">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="preload" as="image" href="img/PRV_Exploded_View_Render.png" fetchpriority="high">
+<link rel="preload" as="image" href="img/hw-ams-cleanroom.jpg" fetchpriority="high">
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -43,6 +44,7 @@
     </button>
     <nav class="site-nav" id="site-nav">
       <a href="#work">Work</a>
+      <a href="#experience">Experience</a>
       <a href="#approach">About</a>
       <a href="#cv">CV</a>
       <a href="https://linkedin.com/in/mohamedoubih" target="_blank" rel="noopener">LinkedIn</a>
@@ -55,177 +57,431 @@
 
   <section class="hero">
     <div class="wrap hero__grid">
-      <div>
-        <p class="eyebrow">Mechanical engineer · Aerospace hardware</p>
-        <h1>Mechanical hardware built to survive the real world.</h1>
+      <div class="hero__text">
+        <p class="eyebrow">Mechanical Engineer · Hardware Development</p>
+        <h1>Mechanical design, prototypes and testing.</h1>
         <p class="hero__lede">
-          Mechanical engineer working across mechanisms, low-temperature sealing, fluid systems,
-          lightweight structures and experimental test hardware — from uncertain requirements
-          through CAD, prototype, instrumentation, testing and iteration.
+          I’m Mohamed, a mechanical engineer. I’ve worked on balloon hardware, automotive parts and
+          precision assembly fixtures. What I enjoy most is taking a physical problem through design,
+          building and testing the hardware, and improving it based on the results. I’m now looking to
+          bring that experience into robotics and electromechanical hardware.
         </p>
-        <p class="hero__location">Bratislava, Slovakia · Italian / EU citizen · Open to relocation</p>
+        <ul class="hero__facts">
+          <li>Bratislava, Slovakia</li>
+          <li>Italian / EU citizen</li>
+          <li>Open to relocation</li>
+        </ul>
         <div class="hero__actions">
-          <a class="arrow-link arrow-link--primary" href="#work">View selected work <span class="arrow" aria-hidden="true">→</span></a>
-          <a class="arrow-link arrow-link--muted" href="pdf/Mohamed_Oubih_CV.pdf" target="_blank" rel="noopener">Download CV <span class="arrow" aria-hidden="true">↗</span></a>
+          <a class="arrow-link arrow-link--primary" href="pdf/Mohamed_Oubih_CV.pdf" target="_blank" rel="noopener">Download CV <span class="arrow" aria-hidden="true">↗</span></a>
+          <a class="arrow-link arrow-link--muted" href="#work">See the projects <span class="arrow" aria-hidden="true">↓</span></a>
         </div>
         <p class="hero__contact">
           <a href="mailto:mohamed.oubih0212@gmail.com">mohamed.oubih0212@gmail.com</a>
           · <a href="https://linkedin.com/in/mohamedoubih" target="_blank" rel="noopener">LinkedIn ↗</a>
         </p>
+        <dl class="hero__roles">
+          <div><dt>2025–26</dt><dd>Noove · balloon and radiosonde hardware</dd></div>
+          <div><dt>2023–25</dt><dd>OPmobility · automotive exterior parts</dd></div>
+          <div><dt>2022–23</dt><dd>University of Perugia · AMS-02 tooling</dd></div>
+        </dl>
       </div>
-      <figure class="hero-visual">
-        <div class="hero-visual__field">
-          <img src="img/PRV_Exploded_View_Render.png" width="1300" height="1605"
-               fetchpriority="high" decoding="async"
-               alt="Exploded CAD render of the miniature pressure-relief valve and its internal components.">
-        </div>
-      </figure>
+
+      <div class="hero-hw">
+        <a class="hw hw--wide" href="#ams-02">
+          <img src="img/hw-ams-cleanroom.jpg" width="1400" height="719" fetchpriority="high" decoding="async"
+               alt="Machined AMS-02 integration stations and a vacuum positioning jig holding silicon sensors on a clean-room optical table.">
+          <span class="hw__cap"><b>03</b> AMS-02 integration tooling, in use</span>
+        </a>
+        <a class="hw hw--valve" href="#prv">
+          <img src="img/Valve_Prototype.jpg" width="639" height="1136" decoding="async"
+               alt="Assembled pressure-relief valve prototype on a bench: a black SLA-printed housing with a yellow Kapton diaphragm film clamped in its bolted flange, the spring visible through a slot, and the preload screw at the end.">
+          <span class="hw__cap"><b>01</b> Valve prototype</span>
+        </a>
+        <a class="hw" href="#bms">
+          <img src="img/BMS_Cropped.jpg" width="1300" height="1636" decoding="async"
+               alt="Pneumatic test rig: flow meter, solenoid valve pair, diaphragm pump and controller board.">
+          <span class="hw__cap"><b>02</b> Pneumatic test rig</span>
+        </a>
+        <a class="hw" href="#fd-11">
+          <img src="img/hw-fd11.jpg" width="682" height="922" decoding="async"
+               alt="Production FD-11 radiosonde enclosure held in a hand, with the flexible sensor board leaving the shell.">
+          <span class="hw__cap"><b>04</b> FD-11 enclosure</span>
+        </a>
+      </div>
     </div>
   </section>
 
   <h2 class="section-label wrap" id="work">Selected work</h2>
 
-  <section class="feature">
-    <div class="wrap feature__grid">
-      <div>
-        <p class="eyebrow">01 / Mechanisms · Fluidics · Harsh environments</p>
-        <h3>Miniature passive pressure-relief valve</h3>
-        <p class="feature__problem">
-          Superpressure balloons heat in sunlight and can exceed their envelope limit. This valve
-          vents helium passively above a set pressure and reseals as it falls, with only a few
-          newtons of actuation force available at low-kPa differentials.
-        </p>
-        <dl class="metrics metrics--lg">
-          <div><dd>1.4–6.5 kPa</dd><dt>Cracking range</dt></div>
-          <div><dd>R² = 0.9996</dd><dt>Six-preload linearity</dt></div>
-          <div><dd>−20 °C</dd><dt>Characterized to</dt></div>
+  <div class="wrap">
+    <p class="work-intro">
+      Projects <b>01</b>, <b>02</b> and <b>04</b> come from one role: sole mechanical engineer on Project
+      Picoballoon at <b>Noove</b> (2025–26). Project <b>03</b> comes from my MSc thesis and research
+      fellowship at the <b>University of Perugia</b>.
+    </p>
+  </div>
+
+  <!-- 01 — Pressure-relief valve -->
+  <article class="project project--feature" id="prv" aria-labelledby="prv-title">
+    <div class="wrap project__grid">
+      <div class="project__body">
+        <p class="eyebrow">01 · Noove — Project Picoballoon · 2025–26</p>
+        <h3 id="prv-title">Miniature pressure-relief valve</h3>
+        <p class="project__sub">A passive valve that vents a superpressure balloon above a set pressure and reseals as it falls.</p>
+
+        <dl class="brief">
+          <div><dt>Problem</dt><dd>At 1–6.5&nbsp;kPa the valve has only a few newtons to work with, and it must stay light and seal in the cold.</dd></div>
+          <div><dt>My contribution</dt><dd>Sole mechanical engineer: concepts, CAD, SLA-printed prototypes, test method and software, ambient and cold testing, analysis and redesign.</dd></div>
+          <div><dt>Outcome</dt><dd>A diaphragm architecture that separates pressure sensing from sealing, with cracking pressure set by spring preload.</dd></div>
+          <div><dt>Status</dt><dd><span class="status status--dev">Development prototype</span>, characterised in air at ambient and cold temperatures; not yet qualified.</dd></div>
         </dl>
-        <a class="arrow-link arrow-link--primary" href="pdf/prv.pdf" target="_blank" rel="noopener">View engineering case study <span class="arrow" aria-hidden="true">→</span></a>
+
+        <dl class="metrics">
+          <div><dt>Measured cracking range, set by spring preload</dt><dd>1.4–6.5 kPa</dd></div>
+          <div><dt>Measured repeatability, 8 cycles over 10&nbsp;h at −25&nbsp;°C</dt><dd>±0.9 %</dd></div>
+          <div><dt>Test-fitted vs calculated diaphragm area</dt><dd>2.4 %</dd></div>
+        </dl>
+
+        <div class="details">
+          <h4>The design change</h4>
+          <p>
+            The first concept was direct-acting: the same area collected the pressure and formed the seal, so a few
+            newtons were spread over a large seal face and sealing depended on finish and lubricant. The diaphragm
+            design separates the two: a Kapton diaphragm collects pressure over about 600&nbsp;mm², and the plunger
+            concentrates that force on a 3.175&nbsp;mm steel ball on a machined PTFE seat.
+          </p>
+
+          <h4>What testing showed</h4>
+          <p>
+            Cracking pressure followed preload linearly across six settings at 28&nbsp;°C. Replacing the Mylar diaphragm
+            with Kapton reduced the fitted offset force from about 0.44&nbsp;N to 0.084&nbsp;N; the remainder may partly be
+            a preload or assembly-reference error.
+          </p>
+          <div class="tests">
+            <table>
+              <thead><tr><th scope="col">Cold test (air)</th><th scope="col">Temperature</th><th scope="col">Result</th></tr></thead>
+              <tbody>
+                <tr><td data-label="Test">Cracking vs preload, 6 settings</td><td data-label="Temperature">28&nbsp;°C and −20&nbsp;°C</td><td data-label="Result">32.7&nbsp;% higher when cold, by a constant ratio</td></tr>
+                <tr><td data-label="Test">Repeatability, 8 cycles over 10&nbsp;h</td><td data-label="Temperature">−25&nbsp;°C</td><td data-label="Result">3170 ± 29&nbsp;Pa (±0.9&nbsp;%)</td></tr>
+                <tr><td data-label="Test">Housing O-ring seal</td><td data-label="Temperature">≈ −30 ± 3&nbsp;°C</td><td data-label="Result">Leakage starts</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p>
+            The force-balance fit attributes the cold rise to a smaller effective diaphragm area
+            (599.5 → 451.8&nbsp;mm²), not added friction; the physical cause is an untested hypothesis. The O-ring
+            leak is a separate failure.
+          </p>
+
+          <h4>Still open</h4>
+          <p>
+            Relief capacity is about 900&nbsp;sccm at 4–5&nbsp;kPa (requirement above 2,000&nbsp;sccm), mass is 27&nbsp;g
+            (target below 20&nbsp;g), and the seal must reach the −60&nbsp;°C design minimum. Helium, thermal-cycling,
+            endurance and low-temperature qualification tests are planned.
+          </p>
+        </div>
+
+        <a class="arrow-link arrow-link--primary" href="pdf/prv.pdf" target="_blank" rel="noopener">Engineering case study (PDF) <span class="arrow" aria-hidden="true">→</span></a>
       </div>
-      <figure class="feature__media reveal">
-        <img src="img/PRV_Exploded_View_Render.png" width="1300" height="1605"
-             loading="lazy" decoding="async"
-             alt="Exploded view of the pressure-relief valve assembly, showing its internal components in build order.">
+
+      <div class="project__media-stack">
+        <figure class="project__media media--contain reveal">
+          <img src="img/PRV_Exploded_View_Render.png" width="1946" height="2402" loading="lazy" decoding="async"
+               alt="Exploded CAD render of the pressure-relief valve: housings, Kapton diaphragm, plunger, spring seat, steel ball, PTFE seat and O-ring.">
+        </figure>
+        <figure class="project__media media--wide reveal">
+          <img src="img/prv-section.png" width="1400" height="788" loading="lazy" decoding="async"
+               alt="Section view and force balance: inlet pressure acts on the diaphragm area, opposed by the spring force pressing the ball into the seat.">
+          <figcaption>A large diaphragm area drives a small ball-on-seat contact.</figcaption>
+        </figure>
+      </div>
+    </div>
+  </article>
+
+  <!-- 02 — Balloon Management System -->
+  <article class="project" id="bms" aria-labelledby="bms-title">
+    <div class="wrap project__grid project__grid--flip">
+      <div class="project__body">
+        <p class="eyebrow">02 · Noove — Project Picoballoon · 2025–26</p>
+        <h3 id="bms-title">Balloon Management System</h3>
+        <p class="project__sub">An automated pneumatic platform for balloon preparation and valve testing.</p>
+
+        <dl class="brief">
+          <div><dt>Problem</dt><dd>Each superpressure balloon is pre-stretched at its simulated float pressure before flight. By hand, one stretch meant hours of watching a gauge and correcting a pump, and valve testing needed the same repeatable pressure and flow control.</dd></div>
+          <div><dt>My contribution</dt><dd>Requirements, component selection, pneumatic integration, Python/PyQt control and logging software, the firmware interface, testing and iteration. The ESP32 controller PCB and the initial firmware were designed by the project’s electronics engineer.</dd></div>
+          <div><dt>Outcome</dt><dd>Stretch sequences run unattended, from fast fill to automatic deflation, with safety interlocks.</dd></div>
+          <div><dt>Status</dt><dd><span class="status status--use">Operational</span>: used for balloon preparation and as the test rig for the pressure-relief valve (01).</dd></div>
+        </dl>
+
+        <dl class="metrics metrics--2">
+          <div><dt>Balloons stretched on the platform</dt><dd>50+</dd></div>
+          <div><dt>Balloon volumes handled</dt><dd>80–1100 L</dd></div>
+        </dl>
+
+        <div class="details">
+          <h4>Pneumatic layout</h4>
+          <p>
+            Two 3/2 solenoid valves swap the pump’s suction and discharge between ambient and the balloon line,
+            so one fixed-direction diaphragm pump both inflates and deflates. I chose a multi-gas Bronkhorst flow
+            meter over a helium-specific one: it covers air, argon and nitrogen, and the helium quantity is set
+            separately by free-lift weighing.
+          </p>
+
+          <h4>Control strategy</h4>
+          <p>
+            A balloon is a strongly nonlinear load. Early in inflation it takes a lot of gas for almost no pressure
+            rise; near its inflated shape, pressure climbs steeply. One pump command cannot serve both, so the
+            sequence runs in four stages: open-loop fast fill to a switch pressure, an approach that regulates
+            flow rather than pressure, a dead-band pressure hold, and automatic deflation that ends on pressure.
+          </p>
+          <p>
+            Interlocks stop the test on overpressure, a lost or stale pressure reading, a lost controller link, or
+            pressure failing to rise while the pump runs. It took several software iterations before the sequence
+            ran unattended.
+          </p>
+
+          <h4>Two configurations, measured separately</h4>
+          <div class="configs">
+            <div>
+              <p class="configs__title">Balloon stretching</p>
+              <p>
+                On-board differential-pressure sensor with dead-band regulation during the hold. In a bench
+                cross-check, this sensor read within ±2&nbsp;Pa of a Pressurewell reference: a sensor
+                comparison, not the hold accuracy.
+              </p>
+            </div>
+            <div>
+              <p class="configs__title">Valve characterisation</p>
+              <p>
+                The platform drives the pump and valves and measures flow, while an independent MicroStep
+                Pressurewell supplies the pressure reference, logged over TCP at about 9&nbsp;Hz. This keeps the
+                valve under test out of the control loop.
+              </p>
+            </div>
+          </div>
+
+          <h4>What I would change</h4>
+          <p>
+            The dead-band hold is adequate for stretching, but a PI controller would give smoother corrections
+            and tighter regulation during the hold.
+          </p>
+        </div>
+
+        <a class="arrow-link arrow-link--primary" href="pdf/bms.pdf" target="_blank" rel="noopener">Engineering case study (PDF) <span class="arrow" aria-hidden="true">→</span></a>
+      </div>
+
+      <figure class="project__media media--photo reveal">
+        <img src="img/BMS_Cropped.jpg" width="1300" height="1636" loading="lazy" decoding="async"
+             alt="Balloon Management System hardware on its base plate: Bronkhorst flow meter, solenoid valve pair, diaphragm pump and controller board.">
+        <figcaption>Flow meter, solenoid valve pair, diaphragm pump and controller board.</figcaption>
       </figure>
+    </div>
+  </article>
+
+  <!-- 03 — AMS-02 -->
+  <article class="project" id="ams-02" aria-labelledby="ams-title">
+    <div class="wrap project__grid">
+      <div class="project__body">
+        <p class="eyebrow">03 · University of Perugia — AMS-02 Layer 0 upgrade · 2022–23</p>
+        <h3 id="ams-title">AMS-02 Layer 0 integration tooling</h3>
+        <p class="project__sub">Ground fixtures for bonding fragile silicon-sensor ladders onto carbon-composite panels.</p>
+
+        <dl class="brief">
+          <div><dt>Problem</dt><dd>Each silicon-sensor ladder had to land within about ±100&nbsp;µm, 200&nbsp;µm from its neighbour. The tooling had to keep the ladder’s datum through handling and transfer, position it relative to the carbon-composite panel, and control the ~100&nbsp;µm adhesive layer.</dd></div>
+          <div><dt>My contribution</dt><dd>Mechanical design of Stations 1 and 2 and the vacuum positioning jigs that transfer the ladder between them, checked by tolerance stack-up and ANSYS FEA. MSc thesis work, continued as a research fellow.</dd></div>
+          <div><dt>Outcome</dt><dd>A continuous datum-transfer design that, in analysis, meets both the positioning allowance and the panel-flatness limit.</dd></div>
+          <div><dt>Status</dt><dd><span class="status status--use">Manufactured and used</span> for Layer 0 integration in the clean room. Positioning accuracy comes from analysis; the documented work includes no measured positioning result.</dd></div>
+        </dl>
+
+        <dl class="metrics metrics--2">
+          <div><dt>Calculated worst-case positioning error (allowance 100&nbsp;µm)</dt><dd>93 µm</dd></div>
+          <div><dt>FEA-predicted panel deflection, 9&nbsp;→&nbsp;13 supports (limit 50&nbsp;µm)</dt><dd>62 → 26 µm</dd></div>
+        </dl>
+
+        <div class="details">
+          <h4>Context</h4>
+          <p>
+            AMS-02 is a particle detector on the International Space Station. Its Layer 0 upgrade adds 768
+            silicon sensors, built into 72 ladders and bonded onto carbon-composite (CFRP–honeycomb) panels. This
+            tooling assembles that hardware on the ground; it does not fly.
+          </p>
+
+          <h4>Datum-transfer architecture</h4>
+          <p>
+            Stations 1 and 2 work as one datum chain, not two separate fixtures. Station 1 aligns the ladder
+            against fixed references, captures it on a vacuum positioning jig with no clamping on the sensors, and
+            lays adhesive through a mask. The jig then carries the ladder’s reference to Station 2.
+          </p>
+          <p>
+            Station 2 is a 1100 × 1200&nbsp;mm bonding fixture. Pins, holes and slots fix the panel in plane without
+            over-constraining it, support buttons set its height and limit sag, and the relative heights of jig,
+            ladder and panel set the bond-line thickness while the adhesive cures. Spherical-ended locating pins
+            make placing a metre-long jig by hand forgiving, and three jig lengths share one interface.
+          </p>
+
+          <h4>Analysis and testing</h4>
+          <p>
+            A tolerance stack-up of the pin, hole and slot fits, machining tolerances and panel rotation gives a
+            93&nbsp;µm worst-case ladder displacement. ANSYS FEA showed the initial 9-button support let the panel sag
+            62&nbsp;µm, beyond the 50&nbsp;µm limit; 13 buttons brought it to 26&nbsp;µm. I also ran adhesive shear tests
+            (PEEK / 3M 2216).
+          </p>
+        </div>
+
+        <a class="arrow-link arrow-link--primary" href="pdf/ams02.pdf" target="_blank" rel="noopener">Engineering case study (PDF) <span class="arrow" aria-hidden="true">→</span></a>
+      </div>
+
+      <figure class="project__media media--landscape reveal">
+        <img src="img/hw-ams-station1.jpg" width="1118" height="773" loading="lazy" decoding="async"
+             alt="Manufactured Station 1 on a clean-room table, holding a silicon-sensor ladder with its front-end board.">
+        <figcaption>Manufactured Station 1 in use with a silicon-sensor ladder.</figcaption>
+      </figure>
+    </div>
+  </article>
+
+  <!-- 04 — FD-11 enclosure -->
+  <article class="project" id="fd-11" aria-labelledby="fd11-title">
+    <div class="wrap project__grid project__grid--flip">
+      <div class="project__body">
+        <p class="eyebrow">04 · Noove — Project Picoballoon · 2025–26</p>
+        <h3 id="fd11-title">FD-11 radiosonde enclosure</h3>
+        <p class="project__sub">A 6 g, 0.6 mm thin-wall SLA housing for an ultralight balloon-borne radiosonde.</p>
+
+        <dl class="brief">
+          <div><dt>Problem</dt><dd>Payload mass limits how high a small balloon flies, so the shell had an 8&nbsp;g budget. It also carries the whole flight train, with the balloon above and the probe below, and must let the sensor board sit in free air, away from the electronics’ heat.</dd></div>
+          <div><dt>My contribution</dt><dd>Sole mechanical engineer: CAD, prototyping, assembly, testing, drawings and production release to an outside supplier (JLC3DP).</dd></div>
+          <div><dt>Outcome</dt><dd>Met the mass budget with margin, went into outsourced production, and has flown repeatedly to 15&nbsp;km and −61&nbsp;°C.</dd></div>
+          <div><dt>Status</dt><dd><span class="status status--use">Design frozen and in production.</span> Clip behaviour under load in the cold and the 50-day mission duration are not yet validated.</dd></div>
+        </dl>
+
+        <dl class="metrics">
+          <div><dt>Enclosure mass, against an 8&nbsp;g budget</dt><dd>6 g</dd></div>
+          <div><dt>Units produced in two outsourced builds</dt><dd>200</dd></div>
+          <div><dt>Flights on the frozen design</dt><dd>53</dd></div>
+        </dl>
+
+        <div class="details">
+          <h4>Design and iteration</h4>
+          <p>
+            The shell is two 0.6&nbsp;mm halves closed by four 0.4&nbsp;mm snap-fit clips. Every opening in so thin a wall
+            leaves a weak bridge, so local ribs restore thickness there without stiffening the surrounding wall.
+            With cheap, fast prints and no FEA, I developed the clips empirically over seven iterations: three
+            design changes, three to follow the probe’s changing interfaces, and one after a failure in flight.
+          </p>
+
+          <h4>Failure and fix</h4>
+          <p>
+            The tether ring broke once in flight, and the probe separated from the balloon and fell. The enclosure
+            is the structural link in the flight train, so I thickened the ring; there has been no recurrence on
+            later flights.
+          </p>
+
+          <h4>Testing and its limits</h4>
+          <p>
+            Validation included 1.5&nbsp;m drops onto concrete (10 assembled units, five drops each) and a 30-minute
+            −78&nbsp;°C dry-ice soak with visual inspection, and every flight loads the shell and ring in service.
+            The soak was static, so clip engagement and impact resistance at flight temperature remain untested.
+            No flight has reached the 50-day mission target: flights ended when radio coverage was lost, and the
+            longest verified flight is about 3 days.
+          </p>
+          <p>
+            The snap-fit is the first thing I would redesign: it took the most iterations and tolerates only a few
+            open/close cycles.
+          </p>
+        </div>
+
+        <a class="arrow-link arrow-link--primary" href="pdf/enclosure.pdf" target="_blank" rel="noopener">Engineering case study (PDF) <span class="arrow" aria-hidden="true">→</span></a>
+      </div>
+
+      <figure class="project__media media--contain reveal">
+        <img src="img/Enclosure_Exploded_View_Compressed.png" width="1800" height="1632" loading="lazy" decoding="async"
+             alt="Exploded view of the FD-11 enclosure: upper and lower shells, AAA cell, radiosonde board and flexible sensor board.">
+      </figure>
+    </div>
+  </article>
+
+  <section class="experience" id="experience" aria-labelledby="experience-title">
+    <div class="wrap">
+      <h2 class="block-title" id="experience-title">Experience</h2>
+      <ol class="roles">
+        <li>
+          <p class="roles__when">Aug 2025 – Sep 2026</p>
+          <div>
+            <h3>Mechanical &amp; Aerospace Engineer · Noove s.r.o.</h3>
+            <p class="roles__where">Bratislava, Slovakia · Projects 01, 02, 04</p>
+            <p>
+              Sole mechanical engineer on Project Picoballoon: the FD-11 radiosonde and a superpressure
+              balloon system. Design, drawings, GD&amp;T, BOMs, supplier release, assembly and field-test
+              support across 20+ launch campaigns. Also designed assembly and calibration fixtures for
+              flexible humidity-sensor boards.
+            </p>
+          </div>
+        </li>
+        <li>
+          <p class="roles__when">May 2023 – Jul 2025</p>
+          <div>
+            <h3>Mechanical Design Engineer · OPmobility</h3>
+            <p class="roles__where">Bratislava, Slovakia</p>
+            <p>
+              Injection-moulded automotive exterior parts in CATIA V5 (bumper systems, brackets and trim
+              interfaces), designed for moulding: draft, ribs, snap-fits and undercuts. 50+ production drawings
+              with GD&amp;T and tolerance analysis; prototype and validation support on Škoda, Opel and Citroën
+              programmes.
+            </p>
+          </div>
+        </li>
+        <li>
+          <p class="roles__when">Aug 2022 – May 2023</p>
+          <div>
+            <h3>Research Fellow · University of Perugia</h3>
+            <p class="roles__where">Terni, Italy · Project 03</p>
+            <p>
+              Integration tooling for the AMS-02 Layer 0 upgrade, continuing the work of my MSc thesis.
+              MSc Industrial Engineering, cum laude (2022).
+            </p>
+          </div>
+        </li>
+      </ol>
     </div>
   </section>
 
-  <article class="project">
-    <div class="wrap project__grid">
-      <figure class="project__media media--square reveal">
-        <img src="img/AMS_Hero_Pic.png" width="1256" height="1193"
-             loading="lazy" decoding="async"
-             alt="AMS-02 Layer 0 integration fixture holding a silicon tracker subassembly.">
-      </figure>
+  <section class="approach" id="approach" aria-labelledby="approach-title">
+    <div class="wrap approach__grid">
       <div>
-        <p class="eyebrow">02 / Precision tooling</p>
-        <h3>AMS-02 Layer 0 integration tooling</h3>
-        <p class="project__problem">
-          Precision alignment and adhesive-bonding tooling for the AMS-02 Layer 0 silicon-tracker
-          upgrade, part of the ISS-based AMS-02 particle-physics programme. Controlled fragile
-          sensor-subassembly positioning to ~100 µm across a 1100 × 1200 mm integration fixture.
+        <p class="eyebrow">About</p>
+        <h2 id="approach-title">Owning hardware from problem to tested part.</h2>
+        <p class="approach__lede">
+          I’m looking for a role where I own mechanical hardware through the whole loop: requirements,
+          concepts, CAD, prototyping, assembly, testing, failure analysis and redesign. I’m most interested
+          in mechanisms, mechanical integration and moving systems.
         </p>
-        <dl class="metrics">
-          <div><dd>~100 µm</dd><dt>Positioning across 1100 × 1200 mm</dt></div>
-          <div><dd>120 → 93 µm</dd><dt>Worst-case alignment error</dt></div>
-          <div><dd>62 → 26 µm</dd><dt>Predicted self-weight deformation</dt></div>
-        </dl>
-        <a class="arrow-link arrow-link--muted" href="pdf/ams02.pdf" target="_blank" rel="noopener">View case study — PDF <span class="arrow" aria-hidden="true">→</span></a>
       </div>
-    </div>
-  </article>
-
-  <article class="project">
-    <div class="wrap project__grid">
       <div>
-        <p class="eyebrow">03 / Test systems</p>
-        <h3>Balloon management system — fluidic test platform</h3>
-        <p class="project__problem">
-          Manual balloon and valve testing was too slow and sensitive to ambient-pressure drift.
-          I developed a fluidic test platform combining pumps, solenoid routing, pressure and flow
-          instrumentation, and Python/PyQt5 automation for repeatable pressure, leak and endurance
-          testing.
+        <h3 class="approach__h">Why it transfers to robotics and electromechanical hardware</h3>
+        <ul class="transfer">
+          <li><b>Mechanisms on small force budgets.</b> A spring, diaphragm and ball seat that work with a few newtons. <a href="#prv">01</a></li>
+          <li><b>Electromechanical integration.</b> Pump, valves, sensors and a controller, run by my own control software. <a href="#bms">02</a></li>
+          <li><b>Precision mechanical integration.</b> Datums, pin-and-slot constraints, stack-ups and fixture stiffness at the 100&nbsp;µm scale. <a href="#ams-02">03</a></li>
+          <li><b>Design for production.</b> 50+ GD&amp;T drawings for moulded parts at OPmobility, and 200 enclosures released to a supplier. <a href="#fd-11">04</a></li>
+        </ul>
+        <p class="tools">
+          <span>CATIA V5</span><span>SolidWorks</span><span>Onshape</span><span>GD&amp;T · tolerance analysis</span>
+          <span>ANSYS FEA</span><span>Python · PyQt5</span><span>SLA / FDM prototyping</span><span>Pressure, leak and cold testing</span>
         </p>
-        <dl class="metrics">
-          <div><dd>20k+</dd><dt>Samples per test run</dt></div>
-          <div><dd>Closed loop</dd><dt>ΔP control vs ambient drift</dt></div>
-          <div><dd>PyQt5 · ESP32</dd><dt>Application and firmware</dt></div>
-        </dl>
-        <a class="arrow-link arrow-link--muted" href="pdf/bms.pdf" target="_blank" rel="noopener">View case study — PDF <span class="arrow" aria-hidden="true">→</span></a>
       </div>
-      <figure class="project__media media--photo reveal">
-        <img src="img/BMS_Cropped.jpg" width="1300" height="1636"
-             loading="lazy" decoding="async"
-             alt="Balloon management system test-rig hardware: flow meter, solenoid valves, pump and control electronics.">
-      </figure>
-    </div>
-  </article>
-
-  <article class="project">
-    <div class="wrap project__grid">
-      <figure class="project__media media--band reveal">
-        <img src="img/Enclosure_Exploded_View_Compressed.png" width="2400" height="1350"
-             loading="lazy" decoding="async"
-             alt="3D-printed FD-11 radiosonde enclosure shells in an exploded view.">
-      </figure>
-      <div>
-        <p class="eyebrow">04 / Lightweight structures</p>
-        <h3>FD-11 radiosonde enclosure</h3>
-        <p class="project__problem">
-          Attainable altitude is set by payload mass, so every gram in the shell costs ceiling.
-          Seven iterations from first print to frozen design and outsourced production.
-        </p>
-        <dl class="metrics">
-          <div><dd>6 g</dd><dt>Achieved, against 8 g budget</dt></div>
-          <div><dd>0.6 mm</dd><dt>Nominal wall thickness</dt></div>
-          <div><dd>20+</dd><dt>Launch campaigns flown</dt></div>
-        </dl>
-        <a class="arrow-link arrow-link--muted" href="pdf/enclosure.pdf" target="_blank" rel="noopener">View case study — PDF <span class="arrow" aria-hidden="true">→</span></a>
-      </div>
-    </div>
-  </article>
-
-  <section class="approach" id="approach">
-    <div class="wrap">
-      <div class="approach__head">
-        <p class="eyebrow">Approach</p>
-        <h2>From requirement to evidence.</h2>
-      </div>
-      <div class="stages">
-        <div class="stage">
-          <h3>01 · Define</h3>
-          <p>Translate ambiguous requirements and system constraints into mechanical architecture.</p>
-        </div>
-        <div class="stage">
-          <h3>02 · Build</h3>
-          <p>Develop CAD, prototypes, fixtures and instrumentation quickly enough to learn from hardware.</p>
-        </div>
-        <div class="stage">
-          <h3>03 · Validate</h3>
-          <p>Use controlled testing, data and failure analysis to decide what changes next.</p>
-        </div>
-      </div>
-      <p class="domains">
-        <span>Mechanisms</span><span>Low-temperature sealing</span><span>Fluid systems</span>
-        <span>CAD &amp; prototyping</span><span>Test automation</span><span>Design validation</span>
-      </p>
-      <p class="approach__experience">
-        Background spanning aerospace research on the ISS-based AMS-02 programme, automotive
-        production engineering at OPmobility, and startup hardware R&amp;D with Noove.
-      </p>
     </div>
   </section>
 
   <section class="closing" id="cv">
     <div class="wrap closing__grid">
       <div>
-        <h2>Interested in the full engineering background?</h2>
+        <h2>The full background is in my CV.</h2>
         <a class="btn-solid" href="pdf/Mohamed_Oubih_CV.pdf" target="_blank" rel="noopener">Download CV <span aria-hidden="true">↗</span></a>
       </div>
       <p class="closing__contact">
         <a href="mailto:mohamed.oubih0212@gmail.com">mohamed.oubih0212@gmail.com</a><br>
         <a href="https://linkedin.com/in/mohamedoubih" target="_blank" rel="noopener">LinkedIn ↗</a><br>
-        Bratislava, Slovakia · EU citizen · open to relocation
+        Bratislava, Slovakia · Italian / EU citizen · Open to relocation
       </p>
     </div>
   </section>
@@ -235,7 +491,7 @@
 <footer class="site-footer">
   <div class="wrap">
     Balloon and valve work published with the permission of Noove s.r.o.<br>
-    Last updated September 2026.
+    Last updated October 2026.
   </div>
 </footer>
 
