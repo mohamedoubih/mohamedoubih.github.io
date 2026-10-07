@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pressure-Relief Valve · Mohamed Oubih</title>
+<meta name="description" content="Animated section of the miniature pressure-relief valve: assembly, the gas path, and the force balance between the Kapton diaphragm and the spring that sets the cracking pressure.">
+<link rel="canonical" href="https://mohamedoubih.github.io/prv-section/">
+
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://mohamedoubih.github.io/prv-section/">
+<meta property="og:site_name" content="Mohamed Oubih">
+<meta property="og:title" content="How the miniature pressure-relief valve cracks">
+<meta property="og:description" content="Assembly, section, gas path and force balance of a passive valve that vents a superpressure balloon above a set pressure.">
+<meta property="og:image" content="https://mohamedoubih.github.io/img/prv-section-og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Section of the pressure-relief valve while venting: gas flows past the lifted ball and through the seat to the outlet.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://mohamedoubih.github.io/img/prv-section-og.jpg">
+
+<link rel="icon" href="data:,">
+<meta name="theme-color" content="#faf9f6">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<script>if (/[?&]embed\b/.test(location.search)) document.documentElement.classList.add('is-embed');</script>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap top__row">
+    <a class="logo" href="../">Mohamed Oubih</a>
+    <nav class="top__nav" aria-label="Site">
+      <a href="../#prv">Valve project</a>
+      <a href="../pdf/prv.pdf" target="_blank" rel="noopener">Case study PDF ↗</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap" id="main">
+
+  <div class="intro">
+    <p class="eyebrow">01 · Miniature pressure-relief valve</p>
+    <h1>How the valve cracks</h1>
+    <p class="lede">
+      Balloon gas acts on a large Kapton diaphragm; a spring pushes back through the plunger, which holds a
+      steel ball on a PTFE seat. When the pressure force overcomes the spring preload, the ball lifts and the
+      balloon vents. Turning the preload screw sets that pressure.
+    </p>
+  </div>
+
+  <div class="stage">
+    <div class="player">
+      <div class="screen">
+        <div class="viewer" id="viewer" tabindex="0" aria-label="3D animation of the valve: assembly, section and venting cycle. Space plays or pauses; the arrow keys step through the sequence.">
+          <canvas id="scene"></canvas>
+          <div class="labels" id="labels" aria-hidden="true"></div>
+          <div class="loading" id="loading" role="status">
+            <span class="loading__spin" aria-hidden="true"></span>
+            <span class="loading__text">Loading the valve model…</span>
+          </div>
+          <div class="hud" aria-hidden="true">
+            <div>
+              <p class="hud__where" id="hudWhere">Valve 5F</p>
+              <p class="hud__title"><b id="hudNum">01</b><span id="hudTitle">Assembly</span></p>
+            </div>
+            <div class="chips">
+              <p class="chip" id="state"><span class="chip__dot"></span>Valve <b id="stateTxt">sealed</b></p>
+            </div>
+          </div>
+          <div class="forces" id="forces" aria-hidden="true">
+            <p class="forces__h">Force balance on the plunger</p>
+            <div class="forces__row">
+              <span class="forces__k">ΔP</span>
+              <span class="forces__bar"><i id="barP" class="is-p"></i><em id="markP"></em></span>
+              <span class="forces__v" id="valP">0.00 kPa</span>
+            </div>
+            <div class="forces__row">
+              <span class="forces__k">F<sub>p</sub> = ΔP·A<sub>eff</sub></span>
+              <span class="forces__bar"><i id="barFp" class="is-fp"></i></span>
+              <span class="forces__v" id="valFp">0.00 N</span>
+            </div>
+            <div class="forces__row">
+              <span class="forces__k">F<sub>s</sub> = k·x</span>
+              <span class="forces__bar"><i id="barFs" class="is-fs"></i></span>
+              <span class="forces__v" id="valFs">1.49 N</span>
+            </div>
+            <p class="forces__note">A<sub>eff</sub> 599.5 mm² · k 0.27 N/mm · x <span id="valX">5.5</span> mm</p>
+          </div>
+          <p class="hint" aria-hidden="true">Drag to orbit · Ctrl + scroll to zoom</p>
+          <button class="reset" id="btnReset" type="button">Reset view</button>
+          <div class="fallback">
+            <p id="fallbackTxt">This animation needs WebGL, which this browser has turned off. The steps are listed alongside, and the
+              <a href="../pdf/prv.pdf">case study PDF</a> has the section drawings.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="controls" id="controls">
+        <button class="ctl ctl--play" id="btnPlay" type="button" aria-label="Play"></button>
+        <button class="ctl" id="btnPrev" type="button" aria-label="Previous step">
+          <svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path d="M3 2.5h1.8v11H3zM13 2.5v11L5.5 8z" fill="currentColor"/></svg>
+        </button>
+        <button class="ctl" id="btnNext" type="button" aria-label="Next step">
+          <svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path d="M11.2 2.5H13v11h-1.8zM3 2.5v11L10.5 8z" fill="currentColor"/></svg>
+        </button>
+        <div class="timeline">
+          <input type="range" id="scrub" min="0" max="41" step="0.01" value="0" aria-label="Animation time">
+          <div class="ticks" id="ticks" aria-hidden="true"></div>
+        </div>
+        <span class="time" id="time">0:00 / 0:41</span>
+        <button class="ctl ctl--text" id="btnSpeed" type="button" aria-label="Playback speed">1×</button>
+      </div>
+    </div>
+
+    <aside class="side" aria-label="Sequence">
+      <h2 class="side__h">The sequence</h2>
+      <ol class="steps">
+        <li data-where="Valve 5F">
+          <button type="button"><span class="steps__n">01</span><span class="steps__t">Assembly</span><span class="steps__w">Valve 5F</span></button>
+          <p>Lower housing, seat O-ring, PTFE seat and steel ball; the plunger and Kapton diaphragm; spring seat, spring and jam nut; the upper housing, clamped by six M3 bolts; and the M6 preload screw.</p>
+        </li>
+        <li data-where="Section through the inlet">
+          <button type="button"><span class="steps__n">02</span><span class="steps__t">Section</span><span class="steps__w">Section through the inlet</span></button>
+          <p>Cut through the axis and the inlet barb. Red is balloon gas at inlet pressure, blue is ambient.</p>
+        </li>
+        <li data-where="Section through the inlet">
+          <button type="button"><span class="steps__n">03</span><span class="steps__t">The parts</span><span class="steps__w">Load path</span></button>
+          <p>The spring pushes down on the spring seat, diaphragm and plunger, and the plunger holds the 3.175&nbsp;mm steel ball on the machined PTFE seat. The diaphragm collects the pressure; the ball does the sealing.</p>
+        </li>
+        <li data-where="Inlet side">
+          <button type="button"><span class="steps__n">04</span><span class="steps__t">Pressure builds</span><span class="steps__w">Valve sealed</span></button>
+          <p>Gas from the balloon fills the chamber under the diaphragm. The opening force ΔP·A<sub>eff</sub> grows, but while it is below the spring force kx the ball stays on its seat.</p>
+        </li>
+        <li data-where="Seat">
+          <button type="button"><span class="steps__n">05</span><span class="steps__t">Cracking and venting</span><span class="steps__w">Valve open</span></button>
+          <p>At ΔP·A<sub>eff</sub> = kx the diaphragm and plunger lift against the spring, the ball comes off the seat, and gas flows through the seat to the outlet.</p>
+        </li>
+        <li data-where="Seat">
+          <button type="button"><span class="steps__n">06</span><span class="steps__t">Reseal</span><span class="steps__w">Valve sealed</span></button>
+          <p>Venting lowers the pressure; once the opening force drops below the spring force, the spring returns the ball to the seat and the valve seals again.</p>
+        </li>
+        <li data-where="Preload screw">
+          <button type="button"><span class="steps__n">07</span><span class="steps__t">Setting the pressure</span><span class="steps__w">P<sub>c</sub> = kx / A<sub>eff</sub></span></button>
+          <p>Turning the preload screw changes x, and the cracking pressure follows it linearly: 1.4–6.5&nbsp;kPa measured across the preload range, about 450&nbsp;Pa per millimetre.</p>
+        </li>
+      </ol>
+    </aside>
+  </div>
+
+  <section class="notes" aria-labelledby="numbersTitle">
+    <div>
+      <h2 id="numbersTitle">The numbers behind it</h2>
+      <dl class="facts">
+        <div><dt>Measured cracking range, set by spring preload</dt><dd>1.4–6.5 kPa</dd></div>
+        <div><dt>Effective diaphragm area, fitted from tests</dt><dd>599.5 mm²</dd></div>
+        <div><dt>Setpoint sensitivity, k / A<sub>eff</sub></dt><dd>450 Pa/mm</dd></div>
+        <div><dt>Repeatability, 8 cycles over 10 h at −25 °C</dt><dd>±0.9 %</dd></div>
+      </dl>
+    </div>
+    <div>
+      <h2>About this animation</h2>
+      <ul>
+        <li>Built from the Valve 5F CATIA assembly. The spring is drawn for illustration with the real rate (0.27&nbsp;N/mm); its coil dimensions are approximate.</li>
+        <li>The lift of the plunger and ball is exaggerated so the gap at the seat can be seen, and the 55&nbsp;µm diaphragm is drawn thicker.</li>
+        <li>The cycle uses a 5.5&nbsp;mm preload. The force balance gives about 2.5&nbsp;kPa; the valve measured 2.37&nbsp;kPa at that setting, the difference being a small fitted offset force.</li>
+      </ul>
+    </div>
+  </section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    Project Picoballoon, Noove s.r.o., 2025–26 · published with permission ·
+    <a href="../#prv">Back to the portfolio</a>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/three@0.149.0/build/three.min.js"
+        integrity="sha384-RRHfJ6w1mTlKUBMYT/hvnRiOzEB/vyRV3DrQOseb6oYfvaZSfdd0byS4bHps0k2R"
+        crossorigin="anonymous"></script>
+<script src="app.js"></script>
+
+<script data-goatcounter="https://momoportfolio.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+
+</body>
+</html>

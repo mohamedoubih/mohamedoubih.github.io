@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AMS-02 Layer 0 Integration · Mohamed Oubih</title>
+<meta name="description" content="Animated walkthrough of the AMS-02 Layer 0 integration tooling: how the QLCS panel is located on Station 2, and how a silicon-sensor ladder is aligned at Station 1 and carried on the vacuum positioning jig to its bond.">
+<link rel="canonical" href="https://mohamedoubih.github.io/ams02-transfer/">
+
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://mohamedoubih.github.io/ams02-transfer/">
+<meta property="og:site_name" content="Mohamed Oubih">
+<meta property="og:title" content="AMS-02 Layer 0 integration, animated">
+<meta property="og:description" content="The QLCS is located on Station 2, then a silicon-sensor ladder keeps its datum from Station 1 to the bond on the vacuum positioning jig.">
+<meta property="og:image" content="https://mohamedoubih.github.io/img/ams-l0-og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="The octagonal AMS-02 Layer 0 plane with its four silicon-sensor quadrants, from the integration animation.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://mohamedoubih.github.io/img/ams-l0-og.jpg">
+
+<link rel="icon" href="data:,">
+<meta name="theme-color" content="#faf9f6">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<script>if (/[?&]embed\b/.test(location.search)) document.documentElement.classList.add('is-embed');</script>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap top__row">
+    <a class="logo" href="../">Mohamed Oubih</a>
+    <nav class="top__nav" aria-label="Site">
+      <a href="../#ams-02">AMS-02 project</a>
+      <a href="../pdf/ams02.pdf" target="_blank" rel="noopener">Case study PDF ↗</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap" id="main">
+
+  <div class="intro">
+    <p class="eyebrow">03 · AMS-02 Layer 0 integration tooling</p>
+    <h1>From one ladder to Layer 0</h1>
+    <p class="lede">
+      First the carbon-composite QLCS is located on Station 2. Then each silicon-sensor ladder, which
+      has to land within about ±100&nbsp;µm of its place and 200&nbsp;µm from its neighbour, is aligned
+      once at Station 1; the vacuum positioning jig carries that alignment, without letting go, to the
+      bond at Station 2. Finally the full quadrant is glued onto the Layer 0 plane at Station 3, which
+      goes on top of AMS-02.
+    </p>
+  </div>
+
+  <div class="stage">
+    <div class="player">
+      <div class="screen">
+        <div class="viewer" id="viewer" tabindex="0" aria-label="3D animation of the Layer 0 integration sequence. Space plays or pauses; the arrow keys step through the sequence.">
+          <canvas id="scene"></canvas>
+          <div class="labels" id="labels" aria-hidden="true"></div>
+          <div class="loading" id="loading" role="status">
+            <span class="loading__spin" aria-hidden="true"></span>
+            <span class="loading__text">Loading the 3D model…</span>
+          </div>
+          <div class="hud" aria-hidden="true">
+            <div>
+              <p class="hud__where" id="hudWhere">Station 2 · QLCS</p>
+              <p class="hud__title"><b id="hudNum">01</b><span id="hudTitle">Supports</span></p>
+            </div>
+            <div class="chips">
+              <p class="chip" id="vac"><span class="chip__dot"></span>Vacuum <b id="vacState">off</b></p>
+              <p class="chip chip--cure" id="cure">Curing · days <span class="bar"><i id="cureBar"></i></span></p>
+            </div>
+          </div>
+          <p class="hint" aria-hidden="true">Drag to orbit · Ctrl + scroll to zoom</p>
+          <button class="reset" id="btnReset" type="button">Reset view</button>
+          <div class="fallback">
+            <p>This animation needs WebGL, which this browser has turned off. The steps are listed alongside, and the
+              <a href="../pdf/ams02.pdf">case study PDF</a> has the CAD figures.</p>
+          </div>
+        </div>
+
+        <figure class="sect" id="sect" data-panel="qlcs">
+          <div class="sect__panel sect__panel--qlcs">
+            <p class="sect__h">Locating the QLCS on Station 2</p>
+            <svg viewBox="0 0 420 268" role="img" aria-labelledby="qT qD">
+              <title id="qT">How the QLCS is located on Station 2</title>
+              <desc id="qD">Top: plan of the two PEEK edge inserts. Guide pins in two diagonal slots allow only a 3 mm move at 45 degrees; after it, the precision hole and the horizontal slot line up with the station holes and take the fixing pins, and the guide pins are removed. Bottom: section through a support button. The bottom skin rests on the base, 0.5 mm above the plate, and slides under the flexible cap. Not to scale.</desc>
+              <defs>
+                <mask id="qCut" maskUnits="userSpaceOnUse" x="0" y="0" width="420" height="140">
+                  <rect x="0" y="0" width="420" height="140" fill="#fff"/>
+                  <circle cx="60" cy="80" r="7.5" fill="#000"/>
+                  <path d="M115.3 67.3L128 80M257.3 67.3L270 80M334 80H354" stroke="#000" stroke-width="15" stroke-linecap="round"/>
+                </mask>
+                <pattern id="qHc" width="7" height="7" patternUnits="userSpaceOnUse">
+                  <path d="M0 3.5h7M3.5 0v7" stroke="#7a7c82" stroke-width=".6"/>
+                </pattern>
+              </defs>
+              <text x="10" y="11" class="sv-h">Plan · PEEK edge inserts</text>
+              <rect x="10" y="18" width="400" height="92" fill="#52bab3"/>
+              <circle cx="60" cy="80" r="6" fill="#256b66"/>
+              <circle cx="344" cy="80" r="6" fill="#256b66"/>
+              <circle cx="128" cy="80" r="6" fill="#256b66"/>
+              <circle cx="270" cy="80" r="6" fill="#256b66"/>
+              <g id="qPlan">
+                <g mask="url(#qCut)">
+                  <rect x="10" y="18" width="400" height="84" fill="#46484e"/>
+                  <rect x="30" y="56" width="160" height="46" fill="#d6c79a"/>
+                  <rect x="230" y="56" width="160" height="46" fill="#d6c79a"/>
+                </g>
+                <text x="210" y="40" class="sv-in">QLCS</text>
+              </g>
+              <g id="qGuide">
+                <circle cx="128" cy="80" r="5" fill="#cf3b30"/>
+                <circle cx="270" cy="80" r="5" fill="#cf3b30"/>
+              </g>
+              <g id="qFix">
+                <circle cx="60" cy="80" r="5" fill="#59606b"/>
+                <circle cx="344" cy="80" r="5" fill="#59606b"/>
+              </g>
+              <g class="sv-dim">
+                <path id="qArrow" d="M150 100l-14-14m0 0v7m0-7h7"/>
+                <text x="60" y="128" text-anchor="middle">precision hole</text>
+                <text x="199" y="128" text-anchor="middle">diagonal slots + guide pins</text>
+                <text x="350" y="128" text-anchor="middle">horizontal slot</text>
+              </g>
+
+              <text x="10" y="146" class="sv-h">Section · support button</text>
+              <rect x="10" y="238" width="400" height="28" fill="#52bab3"/>
+              <path d="M150 248H270V238L264 233H156L150 238Z" fill="#d2b48c" stroke="#8a6d43" stroke-width=".6"/>
+              <path id="qCap" d="M162 220H258L250 226L244 232H215V246H205V232H176L170 226Z" fill="#7a3b36"/>
+              <path id="qCapIn" d="M172 220H248L241 224H179Z" fill="#5c2a26"/>
+              <g id="qSec">
+                <rect x="10" y="194" width="400" height="3" fill="#3a3c41"/>
+                <rect x="10" y="197" width="144" height="33" fill="#5a5c62"/>
+                <rect x="10" y="197" width="144" height="33" fill="url(#qHc)"/>
+                <rect x="314" y="197" width="96" height="33" fill="#5a5c62"/>
+                <rect x="314" y="197" width="96" height="33" fill="url(#qHc)"/>
+                <rect x="10" y="230" width="152" height="3" fill="#2c2d31"/>
+                <rect x="258" y="230" width="152" height="3" fill="#2c2d31"/>
+                <text x="362" y="217" class="sv-in">QLCS</text>
+              </g>
+              <g class="sv-dim">
+                <text x="60" y="256" class="sv-dim--in">Station 2</text>
+                <path d="M266 241l26 10"/><text x="296" y="256" class="sv-dim--in">base, 0.5 proud</text>
+                <text x="210" y="216" text-anchor="middle" class="sv-key" id="qCapLbl">cap</text>
+              </g>
+            </svg>
+            <figcaption>Not to scale. The guide pins let the panel move only 3&nbsp;mm at 45°. Its bottom skin slides under the button caps, which flex and press it onto the bases, so the QLCS is held in z, and the precision hole opens for its pin.</figcaption>
+          </div>
+
+          <div class="sect__panel sect__panel--bond">
+            <p class="sect__h">Section at Station 2 · row 5</p>
+            <svg viewBox="0 0 420 232" role="img" aria-labelledby="sectT sectD">
+              <title id="sectT">Bond stack at Station 2</title>
+              <desc id="sectD">The jig foot rests on the Station 2 plate with its spherical-ended pin in the plate's hole. Under the ladder: 0.10 mm of adhesive, the 5.6 mm QLCS panel and the 0.5 mm support buttons. Not to scale.</desc>
+              <defs>
+                <pattern id="hc" width="7" height="7" patternUnits="userSpaceOnUse">
+                  <path d="M0 3.5h7M3.5 0v7" stroke="#6a6c72" stroke-width=".6"/>
+                </pattern>
+              </defs>
+              <rect x="6" y="178" width="300" height="48" fill="#52bab3"/>
+              <rect x="30" y="178" width="18" height="32" fill="#2e706b"/>
+              <text x="190" y="207" class="sv-in">Station 2 plate</text>
+              <rect x="196" y="172" width="54" height="6" fill="#c4996b"/>
+              <rect x="96" y="142" width="210" height="30" fill="#46484e"/>
+              <rect x="96" y="145" width="210" height="24" fill="url(#hc)" opacity=".55"/>
+              <text x="200" y="161" class="sv-in">QLCS</text>
+              <g id="secLadder">
+                <rect id="secGlue" x="96" y="138" width="210" height="4" fill="#e4a52c"/>
+                <rect x="96" y="130" width="210" height="8" fill="#b6b5df" stroke="#55537f" stroke-width=".6"/>
+              </g>
+              <g id="secJig">
+                <rect x="10" y="40" width="296" height="86" fill="#82a8d6"/>
+                <rect x="10" y="40" width="58" height="138" fill="#5f80a8"/>
+                <rect x="96" y="126" width="210" height="4" fill="#d47b2d"/>
+                <path d="M35 178h8v22h-8z" fill="#d9b23b"/>
+                <circle cx="39" cy="201" r="5.5" fill="#d9b23b"/>
+                <text x="190" y="88" class="sv-in">Positioning jig</text>
+                <text x="39" y="112" class="sv-in sv-in--sm">foot</text>
+              </g>
+              <g class="sv-dim">
+                <path d="M306 134h8l6-12h4"/><text x="328" y="125">ladder 0.52</text>
+                <path d="M306 140h22"/><text x="332" y="143" class="sv-key">adhesive 0.10</text>
+                <path d="M306 157h8l6 6h4"/><text x="328" y="166">QLCS 5.6</text>
+                <path d="M250 175h64l6 10h4"/><text x="328" y="188">button 0.5</text>
+                <path d="M48 214h22"/><text x="74" y="217">pin in hole</text>
+              </g>
+            </svg>
+            <figcaption>Not to scale, mm. The pin in the hole sets the position; the foot, button and QLCS set the 0.10&nbsp;mm bond line.</figcaption>
+          </div>
+
+          <div class="sect__panel sect__panel--gap">
+            <p class="sect__h">Nominal gap between ladders 4 and 5</p>
+            <svg viewBox="0 0 420 176" role="img" aria-labelledby="gT gD">
+              <title id="gT">Design gap between two neighbouring ladders</title>
+              <desc id="gD">Plan view of ladders 4 and 5 at their electronics end, with a zoom on the line between them: the design gap is 200 micrometres.</desc>
+              <defs>
+                <pattern id="gCells" width="28" height="48" patternUnits="userSpaceOnUse" x="10" y="16">
+                  <rect width="28" height="48" fill="#b6b5df"/>
+                  <path d="M27.5 0V48" stroke="#55537f" stroke-width=".7"/>
+                </pattern>
+              </defs>
+              <rect x="10" y="10" width="190" height="156" fill="#52bab3"/>
+              <rect x="10" y="118" width="150" height="48" fill="#46484e"/>
+              <rect x="10" y="16" width="140" height="48" fill="url(#gCells)"/>
+              <rect x="10" y="66" width="140" height="48" fill="url(#gCells)"/>
+              <path d="M150 16h22v10h6v28h-6v10h-22z" fill="#3ba84c"/>
+              <path d="M150 66h22v10h6v28h-6v10h-22z" fill="#3ba84c"/>
+              <path d="M150 16v98" stroke="#2b2c30" stroke-width="2" stroke-dasharray="1.5 1.5"/>
+              <rect x="10" y="64" width="168" height="2" fill="#2b2c30"/>
+              <rect x="56" y="58" width="58" height="14" fill="none" stroke="#cf3b30" stroke-width="1.4"/>
+              <path d="M114 58L220 10M114 72L220 166" stroke="#cf3b30" stroke-width=".8"/>
+              <rect x="220" y="10" width="190" height="156" fill="#b6b5df" stroke="#cf3b30" stroke-width="1.4"/>
+              <rect x="221" y="84" width="188" height="8" fill="#2b2c30"/>
+              <g class="sv-gap">
+                <path d="M315 50v30m-4-6l4 6 4-6M315 126v-30m-4 6l4-6 4 6"/>
+                <path d="M300 84h30M300 92h30"/>
+                <text x="315" y="42" text-anchor="middle">200 µm</text>
+                <text x="232" y="30">ladder 4</text>
+                <text x="232" y="158">ladder 5</text>
+              </g>
+            </svg>
+            <figcaption>Plan view, after thesis Fig. 2.17. With a 200&nbsp;µm design gap, each ladder may sit at most 100&nbsp;µm from its nominal position.</figcaption>
+          </div>
+          <div class="sect__panel sect__panel--l0">
+            <p class="sect__h">Section · QLCS landing on the L0 plane</p>
+            <svg viewBox="0 0 420 214" role="img" aria-labelledby="lT lD">
+              <title id="lT">Glue discs between the QLCS and the L0 support plane</title>
+              <desc id="lD">The QLCS lands on a support button next to two glue discs, then slides 3 mm; the discs, slightly thicker than the button stand-off, are squeezed and spread. Not to scale.</desc>
+              <defs>
+                <pattern id="lHc" width="7" height="7" patternUnits="userSpaceOnUse">
+                  <path d="M0 3.5h7M3.5 0v7" stroke="#b8a54a" stroke-width=".6"/>
+                </pattern>
+                <pattern id="lHc2" width="7" height="7" patternUnits="userSpaceOnUse">
+                  <path d="M0 3.5h7M3.5 0v7" stroke="#7a7c82" stroke-width=".6"/>
+                </pattern>
+              </defs>
+              <rect x="10" y="150" width="400" height="4" fill="#2d2f34"/>
+              <rect x="10" y="154" width="400" height="38" fill="#e0cd62"/>
+              <rect x="10" y="154" width="400" height="38" fill="url(#lHc)"/>
+              <rect x="10" y="192" width="400" height="3" fill="#2d2f34"/>
+              <path d="M50 158H110V150L106 146H54L50 150Z" fill="#d2b48c" stroke="#8a6d43" stroke-width=".6"/>
+              <path d="M54 135H106L101 139L97 143H84V152H76V143H63L59 139Z" fill="#7a3b36"/>
+              <g id="lGlue">
+                <rect id="lG1" x="170" y="145" width="40" height="5" rx="1.5" fill="#e4a52c"/>
+                <rect id="lG2" x="260" y="145" width="40" height="5" rx="1.5" fill="#e4a52c"/>
+              </g>
+              <g id="lQ">
+                <rect x="10" y="103" width="400" height="7" fill="#b6b5df"/>
+                <rect x="10" y="110" width="400" height="3" fill="#3a3c41"/>
+                <rect x="10" y="113" width="38" height="30" fill="#5a5c62"/>
+                <rect x="10" y="113" width="38" height="30" fill="url(#lHc2)"/>
+                <rect x="160" y="113" width="250" height="30" fill="#5a5c62"/>
+                <rect x="160" y="113" width="250" height="30" fill="url(#lHc2)"/>
+                <rect x="10" y="143" width="36" height="3" fill="#2c2d31"/>
+                <rect x="114" y="143" width="296" height="3" fill="#2c2d31"/>
+                <text x="330" y="132" class="sv-in">QLCS + ladders</text>
+              </g>
+              <g class="sv-dim">
+                <text x="300" y="177" text-anchor="middle">L0 support plane</text>
+                <text x="80" y="209" text-anchor="middle">button</text>
+                <text x="235" y="209" text-anchor="middle">glue discs</text>
+                <path d="M80 200v-40M235 200v-46"/>
+              </g>
+            </svg>
+            <figcaption>Not to scale. The glue discs (0.6&nbsp;mm mask) are a little thicker than the 0.5&nbsp;mm button stand-off, so the panel squeezes and spreads them as it lands and slides; their spacing keeps neighbours apart.</figcaption>
+          </div>
+        </figure>
+      </div>
+
+      <div class="controls" id="controls">
+        <button class="ctl ctl--play" id="btnPlay" type="button" aria-label="Play"></button>
+        <button class="ctl" id="btnPrev" type="button" aria-label="Previous step">
+          <svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path d="M3 2.5h1.8v11H3zM13 2.5v11L5.5 8z" fill="currentColor"/></svg>
+        </button>
+        <button class="ctl" id="btnNext" type="button" aria-label="Next step">
+          <svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path d="M11.2 2.5H13v11h-1.8zM3 2.5v11L10.5 8z" fill="currentColor"/></svg>
+        </button>
+        <div class="timeline">
+          <input type="range" id="scrub" min="0" max="90" step="0.01" value="0" aria-label="Animation time">
+          <div class="ticks" id="ticks" aria-hidden="true"></div>
+        </div>
+        <span class="time" id="time">0:00 / 1:30</span>
+        <button class="ctl ctl--text" id="btnSpeed" type="button" aria-label="Playback speed">1×</button>
+      </div>
+    </div>
+
+    <aside class="side" aria-label="Sequence">
+      <h2 class="side__h" data-step="0">A · The QLCS on Station 2</h2>
+      <ol class="steps">
+        <li data-id="supports" data-where="Station 2 · QLCS">
+          <button type="button"><span class="steps__n">01</span><span class="steps__t">Supports</span><span class="steps__w">Station 2 · QLCS</span></button>
+          <p>Thirteen PEEK support buttons are glued in their pockets, standing 0.5&nbsp;mm proud of the plate; twelve of them sit under this QLCS. Two guide pins are already in the station.</p>
+        </li>
+        <li data-id="lower" data-where="Station 2 · QLCS">
+          <button type="button"><span class="steps__n">02</span><span class="steps__t">Lower the QLCS</span><span class="steps__w">Station 2 · QLCS</span></button>
+          <p>The QLCS goes down 3&nbsp;mm off its final position: the guide pins enter its two diagonal slots and the button caps pass through the holes in its bottom skin. The precision hole is still covered.</p>
+        </li>
+        <li data-id="slide" data-where="Station 2 · QLCS">
+          <button type="button"><span class="steps__n">03</span><span class="steps__t">Slide 3 mm</span><span class="steps__w">Station 2 · QLCS</span></button>
+          <p>The panel slides 3&nbsp;mm at 45°, the only move the diagonal slots allow. Its bottom skin slides under the button caps, which flex and press it onto the bases, so the QLCS is held in z as well. The precision hole opens.</p>
+        </li>
+        <li data-id="qpin" data-where="Station 2 · QLCS">
+          <button type="button"><span class="steps__n">04</span><span class="steps__t">Pin</span><span class="steps__w">Station 2 · QLCS</span></button>
+          <p>Pins go into the precision hole and the horizontal slot, fixing the QLCS in x–y without over-constraining it, and the guide pins come out. The buttons hold it 0.5&nbsp;mm above the plate.</p>
+        </li>
+        <li data-id="timelapse" data-where="Station 2 · rows 1–4">
+          <button type="button"><span class="steps__n">05</span><span class="steps__t">Ladders 1–4</span><span class="steps__w">Time-lapse</span></button>
+          <p>Ladders 1–4 are bonded row by row, each with the sequence shown next for ladder 5.</p>
+        </li>
+      </ol>
+
+      <h2 class="side__h side__h--b" data-step="5">B · Ladder 5, Station 1 to Station 2</h2>
+      <ol class="steps">
+        <li data-id="unpack" data-where="Station 1 · zone 1">
+          <button type="button"><span class="steps__n">06</span><span class="steps__t">Unpack</span><span class="steps__w">Station 1 · zone 1</span></button>
+          <p>The ladder arrives in its transport container. The cover and the fixing brackets are removed.</p>
+        </li>
+        <li data-id="align" data-where="Station 1 · zone 2">
+          <button type="button"><span class="steps__n">07</span><span class="steps__t">Align</span><span class="steps__w">Station 1 · zone 2</span></button>
+          <p>The ladder is moved to the central zone and pushed against the precision pins, which fix its x–y position on the station.</p>
+        </li>
+        <li data-id="capture" data-where="Station 1 · zone 2">
+          <button type="button"><span class="steps__n">08</span><span class="steps__t">Capture</span><span class="steps__w">Station 1 · zone 2</span></button>
+          <p>The jig carries a ball-ended pin at each end (a Ø5&nbsp;mm pin with a Ø8&nbsp;mm spherical head). It comes down electronics end first, so that pin finds the precision hole before the far pin drops into the slot. Vacuum pads then hold every sensor; nothing clamps the silicon.</p>
+        </li>
+        <li data-id="invert" data-where="Station 1 · zone 2 → zone 3">
+          <button type="button"><span class="steps__n">09</span><span class="steps__t">Turn over</span><span class="steps__w">Station 1 · zone 3</span></button>
+          <p>The jig lifts the ladder, turns over and sets down in the glue zone with the bonding face up.</p>
+        </li>
+        <li data-id="glue" data-where="Station 1 · zone 3">
+          <button type="button"><span class="steps__n">10</span><span class="steps__t">Glue</span><span class="steps__w">Station 1 · zone 3</span></button>
+          <p>A mask is laid on the ladder, adhesive is applied through it, and the mask is lifted off.</p>
+        </li>
+        <li data-id="transfer" data-where="Station 1 → Station 2">
+          <button type="button"><span class="steps__n">11</span><span class="steps__t">Transfer</span><span class="steps__w">Station 1 → Station 2</span></button>
+          <p>The jig turns back over and is carried by its handles to Station 2. The ladder stays on the jig the whole way, so its datum goes with it.</p>
+        </li>
+        <li data-id="locate" data-where="Station 2 · row 5">
+          <button type="button"><span class="steps__n">12</span><span class="steps__t">Locate</span><span class="steps__w">Station 2 · row 5</span></button>
+          <p>Electronics end first again: the round pin enters the precision hole for row 5, then the far end comes down into the slot until the feet seat on the plate. The ladder lands 200&nbsp;µm from ladder 4 on a 0.1&nbsp;mm bond line.</p>
+        </li>
+        <li data-id="cure" data-where="Station 2 · row 5">
+          <button type="button"><span class="steps__n">13</span><span class="steps__t">Cure</span><span class="steps__w">Station 2 · row 5</span></button>
+          <p>The adhesive cures over several days with the jig in place, holding the bonded geometry.</p>
+        </li>
+        <li data-id="release" data-where="Station 2 · row 5">
+          <button type="button"><span class="steps__n">14</span><span class="steps__t">Release</span><span class="steps__w">Station 2 · row 5</span></button>
+          <p>Once the adhesive has cured, the vacuum is released and the jig lifted away. The ladder stays bonded to the QLCS.</p>
+        </li>
+      </ol>
+
+      <h2 class="side__h side__h--b" data-step="14">C · The quadrant onto Layer 0</h2>
+      <ol class="steps">
+        <li data-id="finish" data-where="Station 2 · rows 6–9">
+          <button type="button"><span class="steps__n">15</span><span class="steps__t">Ladders 6–9</span><span class="steps__w">Time-lapse</span></button>
+          <p>Ladders 6–9 go on with the 10- and 8-sensor jigs, completing the nine rows of the quadrant.</p>
+        </li>
+        <li data-id="tjig" data-where="Station 2">
+          <button type="button"><span class="steps__n">16</span><span class="steps__t">Transport jig</span><span class="steps__w">Station 2</span></button>
+          <p>The transport jig is located on Station 2 by its pins and holds the populated QLCS by suction on the sensors, keeping it flat. The fixing pins come out and the quadrant is lifted.</p>
+        </li>
+        <li data-id="l0glue" data-where="Station 3 · L0 plane">
+          <button type="button"><span class="steps__n">17</span><span class="steps__t">Glue on L0</span><span class="steps__w">Station 3</span></button>
+          <p>Station 3 holds the octagonal L0 support plane, with support buttons glued in its pockets as on Station 2. 3M&nbsp;2216 epoxy is spread with a spatula through a 0.6&nbsp;mm mask with Ø10&nbsp;mm holes, and the mask comes off.</p>
+        </li>
+        <li data-id="l0place" data-where="Station 3 · L0 plane">
+          <button type="button"><span class="steps__n">18</span><span class="steps__t">Place on L0</span><span class="steps__w">Station 3</span></button>
+          <p>As on Station 2, the QLCS goes down 3&nbsp;mm off position, slides 3&nbsp;mm at 45° under the button caps and is pinned. The glue discs spread but are spaced so they never merge and trap air.</p>
+        </li>
+        <li data-id="l0cure" data-where="Station 3 · L0 plane">
+          <button type="button"><span class="steps__n">19</span><span class="steps__t">Cure and release</span><span class="steps__w">Station 3</span></button>
+          <p>The glue, which carries the transport and launch loads, cures. The suction is released and the transport jig lifted away.</p>
+        </li>
+        <li data-id="quads" data-where="Station 3 · zenith plane">
+          <button type="button"><span class="steps__n">20</span><span class="steps__t">All four quadrants</span><span class="steps__w">Time-lapse</span></button>
+          <p>The other three quadrants go on the same way: QLCS-R and QLCS-L alternate, rotated 45° on the zenith plane. (The nadir plane underneath is not shown.)</p>
+        </li>
+        <li data-id="cupola" data-where="Layer 0">
+          <button type="button"><span class="steps__n">21</span><span class="steps__t">Cupolas</span><span class="steps__w">Layer 0</span></button>
+          <p>The upper and lower cupolas close the plane: carbon-skin sandwich covers that protect against micrometeorites, shield it thermally and electrically, and keep it light-tight.</p>
+        </li>
+        <li data-id="ams" data-where="AMS-02">
+          <button type="button"><span class="steps__n">22</span><span class="steps__t">On AMS-02</span><span class="steps__w">AMS-02</span></button>
+          <p>Layer 0 sits on top of AMS-02, above Layer 1, adding a new measurement plane to the silicon tracker.</p>
+        </li>
+      </ol>
+    </aside>
+  </div>
+
+  <section class="notes" aria-labelledby="numbersTitle">
+    <div>
+      <h2 id="numbersTitle">The numbers behind it</h2>
+      <dl class="facts">
+        <div><dt>Positioning allowance per ladder</dt><dd>±100 µm</dd></div>
+        <div><dt>Calculated worst case (tolerance stack-up)</dt><dd>93 µm</dd></div>
+        <div><dt>Nominal gap between ladders</dt><dd>200 µm</dd></div>
+        <div><dt>Adhesive bond line</dt><dd>0.10 mm</dd></div>
+        <div><dt>QLCS height above Station 2, set by the buttons</dt><dd>0.5 mm</dd></div>
+        <div><dt>QLCS sag on 13 buttons, FEA (limit 50 µm)</dt><dd>26 µm</dd></div>
+      </dl>
+    </div>
+    <div>
+      <h2>About this animation</h2>
+      <ul>
+        <li>A simplified model built from the thesis CAD: Station 1, the L12 positioning jig, and Station 2 with a QLCS-L panel. Dimensions are approximate.</li>
+        <li>The thin layers (ladder 0.52&nbsp;mm, adhesive 0.10&nbsp;mm, button stand-off 0.5&nbsp;mm) are drawn thicker so they show up; the insets give the real arrangement.</li>
+        <li>Ladders 1–4 are placed in a time-lapse and ladder 5 is shown in full. The cure, which takes several days, is compressed.</li>
+        <li>Station 3 follows the procedure in thesis chapter 4, where the button engagement and the glue layer were tried on a prototype. AMS-02 is heavily simplified.</li>
+      </ul>
+    </div>
+  </section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    MSc thesis and research fellowship work, University of Perugia, 2022–23 ·
+    <a href="../#ams-02">Back to the portfolio</a>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/three@0.149.0/build/three.min.js"
+        integrity="sha384-RRHfJ6w1mTlKUBMYT/hvnRiOzEB/vyRV3DrQOseb6oYfvaZSfdd0byS4bHps0k2R"
+        crossorigin="anonymous"></script>
+<script src="app.js"></script>
+
+<script data-goatcounter="https://momoportfolio.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+
+</body>
+</html>

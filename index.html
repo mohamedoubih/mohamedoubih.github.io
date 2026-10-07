@@ -29,7 +29,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="preload" as="image" href="img/hw-ams-cleanroom.jpg" fetchpriority="high">
-<link rel="stylesheet" href="css/style.css?v=20261007">
+<link rel="stylesheet" href="css/style.css?v=20261009">
 </head>
 <body>
 
@@ -181,18 +181,24 @@
           </p>
         </div>
 
-        <a class="arrow-link arrow-link--primary" href="pdf/prv.pdf" target="_blank" rel="noopener">Engineering case study (PDF) <span class="arrow" aria-hidden="true">→</span></a>
+        <div class="project__links">
+          <a class="arrow-link arrow-link--primary" href="pdf/prv.pdf" target="_blank" rel="noopener">Engineering case study (PDF) <span class="arrow" aria-hidden="true">→</span></a>
+          <a class="arrow-link arrow-link--primary" href="prv-section/" data-anim-open="">How it works, animated <span class="arrow" aria-hidden="true">→</span></a>
+        </div>
       </div>
 
       <div class="project__media-stack">
+        <figure class="project__media media--anim reveal">
+          <a class="anim-link" href="prv-section/" data-anim-open="" aria-label="Play the interactive 3D animation of the pressure-relief valve">
+            <video src="img/prv-section-preview.mp4" poster="img/prv-section-animation.jpg" width="960" height="600"
+                   muted loop playsinline preload="none" data-autoplay aria-hidden="true"></video>
+            <span class="anim-badge">Play the interactive 3D · 41 s</span>
+          </a>
+          <figcaption>Assembly, section and one venting cycle: a large diaphragm area drives a small ball-on-seat contact.</figcaption>
+        </figure>
         <figure class="project__media media--contain reveal">
           <img src="img/PRV_Exploded_View_Render.png" width="1946" height="2402" loading="lazy" decoding="async"
                alt="Exploded CAD render of the pressure-relief valve: housings, Kapton diaphragm, plunger, spring seat, steel ball, PTFE seat and O-ring.">
-        </figure>
-        <figure class="project__media media--wide reveal">
-          <img src="img/prv-section.png" width="1400" height="788" loading="lazy" decoding="async"
-               alt="Section view and force balance: inlet pressure acts on the diaphragm area, opposed by the spring force pressing the ball into the seat.">
-          <figcaption>A large diaphragm area drives a small ball-on-seat contact.</figcaption>
         </figure>
       </div>
     </div>
@@ -313,10 +319,12 @@
             lays adhesive through a mask. The jig then carries the ladder’s reference to Station 2.
           </p>
           <p>
-            Station 2 is a 1100 × 1200&nbsp;mm bonding fixture. Pins, holes and slots fix the panel in plane without
-            over-constraining it, support buttons set its height and limit sag, and the relative heights of jig,
-            ladder and panel set the bond-line thickness while the adhesive cures. Spherical-ended locating pins
-            make placing a metre-long jig by hand forgiving, and three jig lengths share one interface.
+            Station 2 is a 1100 × 1200&nbsp;mm bonding fixture. The panel goes down on two guide pins running in
+            3&nbsp;mm diagonal slots and slides 45° into place, so its bottom skin hooks under the caps of the support
+            buttons, which set its height, hold it in z and limit sag; a pin in a hole and one in a slot then fix it in
+            plane without over-constraining it. The relative heights of jig, ladder and panel set the bond-line
+            thickness while the adhesive cures. Spherical-ended locating pins make placing a metre-long jig by hand
+            forgiving, and three jig lengths share one interface.
           </p>
 
           <h4>Analysis and testing</h4>
@@ -328,14 +336,33 @@
           </p>
         </div>
 
-        <a class="arrow-link arrow-link--primary" href="pdf/ams02.pdf" target="_blank" rel="noopener">Engineering case study (PDF) <span class="arrow" aria-hidden="true">→</span></a>
+        <div class="project__links">
+          <a class="arrow-link arrow-link--primary" href="pdf/ams02.pdf" target="_blank" rel="noopener">Engineering case study (PDF) <span class="arrow" aria-hidden="true">→</span></a>
+          <a class="arrow-link arrow-link--primary" href="ams02-transfer/" data-anim-open="">Integration sequence, animated <span class="arrow" aria-hidden="true">→</span></a>
+        </div>
+        <p class="anim-parts">
+          Watch one part:
+          <a href="ams02-transfer/?step=1&amp;play=1" data-anim-open="1">Locating the QLCS</a> ·
+          <a href="ams02-transfer/?step=6&amp;play=1" data-anim-open="6">Ladder transfer</a> ·
+          <a href="ams02-transfer/?step=15&amp;play=1" data-anim-open="15">Onto Layer 0</a>
+        </p>
       </div>
 
-      <figure class="project__media media--landscape reveal">
-        <img src="img/hw-ams-station1.jpg" width="1118" height="773" loading="lazy" decoding="async"
-             alt="Manufactured Station 1 on a clean-room table, holding a silicon-sensor ladder with its front-end board.">
-        <figcaption>Manufactured Station 1 in use with a silicon-sensor ladder.</figcaption>
-      </figure>
+      <div class="project__media-stack">
+        <figure class="project__media media--anim reveal">
+          <a class="anim-link" href="ams02-transfer/" data-anim-open="" aria-label="Play the interactive 3D animation of the Layer 0 integration">
+            <video src="img/ams-l0-preview.mp4" poster="img/ams-l0-animation.jpg" width="960" height="600"
+                   muted loop playsinline preload="none" data-autoplay aria-hidden="true"></video>
+            <span class="anim-badge">Play the interactive 3D · 3 min</span>
+          </a>
+          <figcaption>The integration sequence in 3D, from locating the QLCS to Layer 0 on AMS-02. My design: Stations 1–2 and the positioning jigs; Station 3 and AMS-02 are shown for context.</figcaption>
+        </figure>
+        <figure class="project__media media--landscape reveal">
+          <img src="img/hw-ams-station1.jpg" width="1118" height="773" loading="lazy" decoding="async"
+               alt="Manufactured Station 1 on a clean-room table, holding a silicon-sensor ladder with its front-end board.">
+          <figcaption>Manufactured Station 1 in use with a silicon-sensor ladder.</figcaption>
+        </figure>
+      </div>
     </div>
   </article>
 
@@ -495,7 +522,16 @@
   </div>
 </footer>
 
-<script src="js/main.js"></script>
+<dialog class="anim-modal" id="animModal" aria-labelledby="animModalTitle">
+  <div class="anim-modal__bar">
+    <p class="anim-modal__title" id="animModalTitle">Interactive 3D</p>
+    <a class="anim-modal__out" href="ams02-transfer/" target="_blank" rel="noopener">Full page ↗</a>
+    <button class="anim-modal__close" type="button" aria-label="Close the animation">✕</button>
+  </div>
+  <iframe class="anim-modal__frame" title="AMS-02 Layer 0 integration, interactive 3D animation" allow="fullscreen"></iframe>
+</dialog>
+
+<script src="js/main.js?v=20261010"></script>
 
 <script data-goatcounter="https://momoportfolio.goatcounter.com/count"
         async src="//gc.zgo.at/count.js"></script>

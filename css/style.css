@@ -178,6 +178,10 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-off
 .arrow-link:hover .arrow,.arrow-link:focus-visible .arrow{transform:translateX(3px)}
 .arrow-link--primary{color:var(--accent-ink)}
 .arrow-link--muted{color:var(--ink-soft)}
+.project__links{display:flex; flex-wrap:wrap; align-items:center; gap:14px 28px}
+.anim-parts{margin:14px 0 0; font-family:var(--mono); font-size:12.5px; color:var(--ink-soft)}
+.anim-parts a{color:var(--accent-ink); text-decoration:none; border-bottom:1px solid currentColor}
+.anim-parts a:hover,.anim-parts a:focus-visible{color:var(--ink)}
 
 .btn-solid{
   display:inline-flex; align-items:center; gap:10px;
@@ -297,6 +301,41 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-off
 .media--wide img{aspect-ratio:1400/788; object-fit:contain}
 .media--photo img{aspect-ratio:4/5; object-fit:cover; object-position:center 40%}
 .media--landscape img{aspect-ratio:1118/773; object-fit:cover}
+/* AMS-02 animation preview card */
+.anim-link{display:block; position:relative; color:#fff; text-decoration:none}
+.media--anim video{display:block; width:100%; height:auto; aspect-ratio:16/10; object-fit:cover; background:var(--canvas); transition:transform .4s ease}
+.project__media:hover video{transform:scale(1.015)}
+.anim-badge{
+  position:absolute; left:12px; bottom:12px; display:inline-flex; align-items:center; gap:9px;
+  background:rgba(20,21,26,.84); font-family:var(--mono); font-size:12px; letter-spacing:.04em;
+  padding:7px 12px 7px 10px; transition:background .15s ease;
+}
+.anim-badge::before{
+  content:""; border-style:solid; border-width:6px 0 6px 10px;
+  border-color:transparent transparent transparent var(--accent);
+}
+.anim-link:hover .anim-badge,.anim-link:focus-visible .anim-badge{background:var(--accent-ink)}
+
+/* the full 3D animation, opened over the page */
+.anim-modal{
+  width:min(1320px, 96vw); height:min(900px, 94vh); max-width:none; max-height:none;
+  padding:0; border:1px solid var(--rule); background:var(--bg); color:var(--ink); overflow:hidden;
+}
+.anim-modal[open]{display:flex; flex-direction:column}
+.anim-modal::backdrop{background:rgba(20,21,26,.72)}
+.anim-modal__bar{
+  display:flex; align-items:center; gap:18px; padding:7px 8px 7px 16px;
+  border-bottom:1px solid var(--rule); font-family:var(--mono); font-size:12px;
+}
+.anim-modal__title{flex:1; margin:0; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-soft)}
+.anim-modal__out{color:var(--accent-ink); text-decoration:none; border-bottom:1px solid currentColor}
+.anim-modal__close{
+  width:34px; height:34px; border:1px solid var(--rule); background:var(--paper); color:var(--ink);
+  font-size:14px; line-height:1; cursor:pointer;
+}
+.anim-modal__close:hover{border-color:var(--ink-soft)}
+.anim-modal__frame{display:block; flex:1; width:100%; border:0; background:var(--bg)}
+html.modal-open{overflow:hidden}
 
 .reveal-init{opacity:0; transform:translateY(16px)}
 .reveal-in{opacity:1; transform:translateY(0); transition:opacity .55s ease,transform .55s ease}
@@ -403,6 +442,9 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-off
 }
 
 @media (max-width:700px){
+  .anim-modal{width:100vw; height:100vh; height:100dvh; max-height:none; border:0}
+  .anim-modal__title{display:none}
+  .anim-modal__bar{justify-content:flex-end}
   .nav-toggle{display:inline-flex}
   .site-nav{
     position:fixed; inset:var(--header-h) 0 auto 0; z-index:99;
@@ -463,6 +505,9 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-off
   .eyebrow{font-size:max(8.5px, calc(11 * var(--u))); margin-bottom:calc(10 * var(--u))}
   .section-label{font-size:max(8.5px, calc(11 * var(--u))); gap:calc(18 * var(--u)); margin:calc(8 * var(--u)) auto calc(12 * var(--u))}
   .arrow-link{font-size:calc(13 * var(--u)); gap:calc(8 * var(--u))}
+  .project__links{gap:calc(12 * var(--u)) calc(26 * var(--u))}
+  .anim-parts{font-size:max(8.5px, calc(12 * var(--u))); margin-top:calc(12 * var(--u))}
+  .anim-badge{font-size:max(8.5px, calc(11.5 * var(--u))); padding:calc(6 * var(--u)) calc(11 * var(--u)) calc(6 * var(--u)) calc(9 * var(--u)); left:calc(10 * var(--u)); bottom:calc(10 * var(--u))}
   .btn-solid{font-size:calc(13 * var(--u)); padding:calc(12 * var(--u)) calc(22 * var(--u))}
 
   .hero{padding:calc(28 * var(--u)) 0 calc(36 * var(--u))}
