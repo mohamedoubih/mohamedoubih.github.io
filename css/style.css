@@ -264,6 +264,13 @@ b,strong{font-weight:600}
 .brief dt{font-size:.875rem; font-weight:600; color:var(--graphite); padding-top:.15em}
 .brief dd{margin:0; line-height:1.6}
 
+/* dated news about a project, after its summary */
+.update{
+  margin:-12px 0 36px; padding:14px 18px; background:var(--bench);
+  border-left:2px solid var(--copper); line-height:1.6;
+}
+.update__label{display:block; font-size:.875rem; font-weight:600; color:var(--copper-ink); margin-bottom:2px}
+
 .status{font-weight:600}
 .status::before{
   content:""; display:inline-block; width:8px; height:8px; border-radius:50%;
@@ -534,6 +541,8 @@ html.modal-open{overflow:hidden}
   .brief{margin-bottom:0}
   .metrics,.metrics--2{border-top:0; margin-bottom:0}
   .more{border-top:0}
+  .update{margin:20px 0}
+  .update + .metrics{border-top:1px solid var(--rule)}
   .configs{grid-template-columns:minmax(0,1fr)}
   .project__media-stack{grid-template-columns:minmax(0,1fr)}
   /* cold-test table: one stacked block per test on phones */
