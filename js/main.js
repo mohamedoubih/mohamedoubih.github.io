@@ -30,29 +30,61 @@
     });
   }
 
-  // Progressive-enhancement reveal for below-the-fold project imagery only.
   var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  if (!reduceMotion && "IntersectionObserver" in window) {
-    var targets = document.querySelectorAll(".reveal");
-    Array.prototype.forEach.call(targets, function (el) {
-      el.classList.add("reveal-init");
+
+  // The header gets its bottom rule once the page has scrolled under it.
+  var header = document.querySelector(".site-header");
+  if (header) {
+    var onScroll = function () {
+      header.classList.toggle("is-scrolled", window.scrollY > 4);
+    };
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+  }
+
+  // The nav marks the section you are reading.
+  if (nav && "IntersectionObserver" in window) {
+    var navLinks = {};
+    Array.prototype.forEach.call(nav.querySelectorAll('a[href^="#"]'), function (a) {
+      navLinks[a.getAttribute("href").slice(1)] = a;
     });
-    var io = new IntersectionObserver(
+    var spy = new IntersectionObserver(
       function (entries) {
         entries.forEach(function (entry) {
+          var link = navLinks[entry.target.id];
+          if (!link) return;
           if (entry.isIntersecting) {
-            entry.target.classList.remove("reveal-init");
-            entry.target.classList.add("reveal-in");
-            io.unobserve(entry.target);
+            Object.keys(navLinks).forEach(function (id) {
+              navLinks[id].removeAttribute("aria-current");
+            });
+            link.setAttribute("aria-current", "true");
+          } else {
+            link.removeAttribute("aria-current");
           }
         });
       },
-      { threshold: 0.15, rootMargin: "0px 0px -40px 0px" }
+      { rootMargin: "-40% 0px -55% 0px" }
     );
-    Array.prototype.forEach.call(targets, function (el) {
-      io.observe(el);
+    Object.keys(navLinks).forEach(function (id) {
+      var section = document.getElementById(id);
+      if (section) spy.observe(section);
     });
   }
+
+  // Printing shows the folded engineering detail too.
+  var printOpened = [];
+  window.addEventListener("beforeprint", function () {
+    Array.prototype.forEach.call(document.querySelectorAll("details:not([open])"), function (d) {
+      d.open = true;
+      printOpened.push(d);
+    });
+  });
+  window.addEventListener("afterprint", function () {
+    printOpened.forEach(function (d) {
+      d.open = false;
+    });
+    printOpened = [];
+  });
 
   // Animations (AMS-02, valve, FD-11): a muted preview loop plays in each card while it is on screen...
   var videos = document.querySelectorAll("video[data-autoplay]");
@@ -94,6 +126,14 @@
       document.documentElement.classList.add("modal-open");
       frame.focus();
     };
+    // Focus moves into the 3D page, so Escape is heard there too (same site, so this is allowed).
+    frame.addEventListener("load", function () {
+      try {
+        frame.contentWindow.addEventListener("keydown", function (e) {
+          if (e.key === "Escape") modal.close();
+        });
+      } catch (err) {}
+    });
     modal.addEventListener("close", function () {
       frame.src = "about:blank"; // unloads the 3D scene
       document.documentElement.classList.remove("modal-open");
