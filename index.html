@@ -29,7 +29,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="preload" as="image" href="img/hw-ams-cleanroom.jpg" fetchpriority="high">
-<link rel="stylesheet" href="css/style.css?v=20261009">
+<link rel="stylesheet" href="css/style.css?v=20261013">
 </head>
 <body>
 
@@ -417,13 +417,26 @@
           </p>
         </div>
 
-        <a class="arrow-link arrow-link--primary" href="pdf/enclosure.pdf" target="_blank" rel="noopener">Engineering case study (PDF) <span class="arrow" aria-hidden="true">→</span></a>
+        <div class="project__links">
+          <a class="arrow-link arrow-link--primary" href="pdf/enclosure.pdf" target="_blank" rel="noopener">Engineering case study (PDF) <span class="arrow" aria-hidden="true">→</span></a>
+          <a class="arrow-link arrow-link--primary" href="fd11-enclosure/" data-anim-open="">How it holds together, animated <span class="arrow" aria-hidden="true">→</span></a>
+        </div>
       </div>
 
-      <figure class="project__media media--contain reveal">
-        <img src="img/Enclosure_Exploded_View_Compressed.png" width="1800" height="1632" loading="lazy" decoding="async"
-             alt="Exploded view of the FD-11 enclosure: upper and lower shells, AAA cell, radiosonde board and flexible sensor board.">
-      </figure>
+      <div class="project__media-stack">
+        <figure class="project__media media--anim reveal">
+          <a class="anim-link" href="fd11-enclosure/" data-anim-open="" aria-label="Play the interactive 3D animation of the FD-11 enclosure">
+            <video src="img/fd11-enclosure-preview.mp4" poster="img/fd11-enclosure-animation.jpg" width="960" height="600"
+                   muted loop playsinline preload="none" data-autoplay aria-hidden="true"></video>
+            <span class="anim-badge">Play the interactive 3D · 33 s</span>
+          </a>
+          <figcaption>The board snaps into the lower shell, the cell and the cover go on, and in flight all 20&nbsp;g hangs from the ring on the lower shell. Insets show the hook and a cover clip in section.</figcaption>
+        </figure>
+        <figure class="project__media media--contain reveal">
+          <img src="img/Enclosure_Exploded_View_Compressed.png" width="1800" height="1632" loading="lazy" decoding="async"
+               alt="Exploded view of the FD-11 enclosure: upper and lower shells, AAA cell, radiosonde board and flexible sensor board.">
+        </figure>
+      </div>
     </div>
   </article>
 
@@ -531,7 +544,7 @@
   <iframe class="anim-modal__frame" title="AMS-02 Layer 0 integration, interactive 3D animation" allow="fullscreen"></iframe>
 </dialog>
 
-<script src="js/main.js?v=20261010"></script>
+<script src="js/main.js?v=20261012"></script>
 
 <script data-goatcounter="https://momoportfolio.goatcounter.com/count"
         async src="//gc.zgo.at/count.js"></script>

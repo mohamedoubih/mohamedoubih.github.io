@@ -54,7 +54,7 @@
     });
   }
 
-  // Animations (AMS-02, valve): a muted preview loop plays in each card while it is on screen...
+  // Animations (AMS-02, valve, FD-11): a muted preview loop plays in each card while it is on screen...
   var videos = document.querySelectorAll("video[data-autoplay]");
   if (!reduceMotion && "IntersectionObserver" in window) {
     var vio = new IntersectionObserver(
@@ -82,11 +82,13 @@
   if (modal && frame && typeof modal.showModal === "function") {
     var titles = {
       "ams02-transfer/": "AMS-02 Layer 0 integration · interactive 3D",
-      "prv-section/": "Pressure-relief valve · interactive 3D"
+      "prv-section/": "Pressure-relief valve · interactive 3D",
+      "fd11-enclosure/": "FD-11 enclosure · interactive 3D"
     };
     var openAnim = function (page, step) {
       frame.src = page + "index.html?embed=1" + (step ? "&step=" + step + "&play=1" : "");
       modal.querySelector(".anim-modal__title").textContent = titles[page] || "Interactive 3D";
+      frame.title = (titles[page] || "Interactive 3D").replace(" · ", ", ") + " animation";
       modal.querySelector(".anim-modal__out").href = page;
       modal.showModal();
       document.documentElement.classList.add("modal-open");
@@ -111,5 +113,6 @@
     });
     if (location.hash === "#ams-animation") openAnim("ams02-transfer/", "");
     if (location.hash === "#prv-animation") openAnim("prv-section/", "");
+    if (location.hash === "#fd11-animation") openAnim("fd11-enclosure/", "");
   }
 })();

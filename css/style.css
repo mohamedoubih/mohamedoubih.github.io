@@ -305,16 +305,18 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-off
 .anim-link{display:block; position:relative; color:#fff; text-decoration:none}
 .media--anim video{display:block; width:100%; height:auto; aspect-ratio:16/10; object-fit:cover; background:var(--canvas); transition:transform .4s ease}
 .project__media:hover video{transform:scale(1.015)}
+/* light and see-through, so the models in the clip stay visible; solid on hover */
 .anim-badge{
   position:absolute; left:12px; bottom:12px; display:inline-flex; align-items:center; gap:9px;
-  background:rgba(20,21,26,.84); font-family:var(--mono); font-size:12px; letter-spacing:.04em;
-  padding:7px 12px 7px 10px; transition:background .15s ease;
+  background:rgba(250,249,246,.5); color:var(--ink); border:1px solid rgba(20,21,26,.14);
+  font-family:var(--mono); font-size:12px; letter-spacing:.04em;
+  padding:6px 11px 6px 9px; transition:background .15s ease, color .15s ease, border-color .15s ease;
 }
 .anim-badge::before{
   content:""; border-style:solid; border-width:6px 0 6px 10px;
   border-color:transparent transparent transparent var(--accent);
 }
-.anim-link:hover .anim-badge,.anim-link:focus-visible .anim-badge{background:var(--accent-ink)}
+.anim-link:hover .anim-badge,.anim-link:focus-visible .anim-badge{background:var(--accent-ink); color:#fff; border-color:transparent}
 
 /* the full 3D animation, opened over the page */
 .anim-modal{
@@ -492,93 +494,96 @@ html.modal-open{overflow:hidden}
    wider, shrinking in proportion to the window down to 0.75px at 1080px and below.
    A narrower desktop window therefore shows the 1440px layout scaled down, the way
    browser zoom would, instead of the same layout filling the window at full size.
-   The smallest labels keep an 8.5px floor. Phone and tablet rules above are untouched. */
+   Type uses its own unit, --t, which follows --u but stops at 0.9333px, so 15px body
+   text never drops below 14px and headings keep their proportions; labels under 12px
+   keep an 11px floor. Phone and tablet rules above are untouched. */
 @media (min-width:901px){
   :root{
     --u:clamp(.75px, calc(100vw / 1440), 1px);
+    --t:clamp(.9333px, calc(100vw / 1440), 1px);
     --content:calc(1060 * var(--u)); --gutter:calc(28 * var(--u)); --header-h:calc(54 * var(--u));
   }
-  body{font-size:calc(15 * var(--u))}
+  body{font-size:calc(15 * var(--t))}
 
-  .logo{font-size:calc(12 * var(--u))}
-  .site-nav{gap:calc(24 * var(--u)); font-size:calc(11.5 * var(--u))}
-  .eyebrow{font-size:max(8.5px, calc(11 * var(--u))); margin-bottom:calc(10 * var(--u))}
-  .section-label{font-size:max(8.5px, calc(11 * var(--u))); gap:calc(18 * var(--u)); margin:calc(8 * var(--u)) auto calc(12 * var(--u))}
-  .arrow-link{font-size:calc(13 * var(--u)); gap:calc(8 * var(--u))}
+  .logo{font-size:calc(12 * var(--t))}
+  .site-nav{gap:calc(24 * var(--u)); font-size:max(11px, calc(11.5 * var(--t)))}
+  .eyebrow{font-size:max(11px, calc(11 * var(--t))); margin-bottom:calc(10 * var(--u))}
+  .section-label{font-size:max(11px, calc(11 * var(--t))); gap:calc(18 * var(--u)); margin:calc(8 * var(--u)) auto calc(12 * var(--u))}
+  .arrow-link{font-size:calc(13 * var(--t)); gap:calc(8 * var(--u))}
   .project__links{gap:calc(12 * var(--u)) calc(26 * var(--u))}
-  .anim-parts{font-size:max(8.5px, calc(12 * var(--u))); margin-top:calc(12 * var(--u))}
-  .anim-badge{font-size:max(8.5px, calc(11.5 * var(--u))); padding:calc(6 * var(--u)) calc(11 * var(--u)) calc(6 * var(--u)) calc(9 * var(--u)); left:calc(10 * var(--u)); bottom:calc(10 * var(--u))}
-  .btn-solid{font-size:calc(13 * var(--u)); padding:calc(12 * var(--u)) calc(22 * var(--u))}
+  .anim-parts{font-size:calc(12 * var(--t)); margin-top:calc(12 * var(--u))}
+  .anim-badge{font-size:max(11px, calc(11.5 * var(--t))); padding:calc(6 * var(--u)) calc(11 * var(--u)) calc(6 * var(--u)) calc(9 * var(--u)); left:calc(10 * var(--u)); bottom:calc(10 * var(--u))}
+  .btn-solid{font-size:calc(13 * var(--t)); padding:calc(12 * var(--u)) calc(22 * var(--u))}
 
   .hero{padding:calc(28 * var(--u)) 0 calc(36 * var(--u))}
   .hero__grid{gap:calc(40 * var(--u))}
-  .hero h1{font-size:calc(36 * var(--u))}
-  .hero__lede{font-size:calc(15.5 * var(--u)); margin-top:calc(14 * var(--u))}
-  .hero__facts{font-size:calc(11.5 * var(--u)); margin-top:calc(14 * var(--u))}
+  .hero h1{font-size:calc(36 * var(--t))}
+  .hero__lede{font-size:calc(15.5 * var(--t)); margin-top:calc(14 * var(--u))}
+  .hero__facts{font-size:max(11px, calc(11.5 * var(--t))); margin-top:calc(14 * var(--u))}
   .hero__facts li{padding:0 calc(10 * var(--u))}
   .hero__actions{margin-top:calc(18 * var(--u)); gap:calc(14 * var(--u)) calc(28 * var(--u))}
-  .hero__contact{font-size:calc(12 * var(--u)); margin-top:calc(12 * var(--u))}
-  .hero__roles{font-size:calc(11.5 * var(--u)); margin-top:calc(18 * var(--u)); padding-top:calc(12 * var(--u))}
+  .hero__contact{font-size:calc(12 * var(--t)); margin-top:calc(12 * var(--u))}
+  .hero__roles{font-size:max(11px, calc(11.5 * var(--t))); margin-top:calc(18 * var(--u)); padding-top:calc(12 * var(--u))}
   .hero__roles div{gap:calc(16 * var(--u))}
   .hero-hw{gap:calc(8 * var(--u))}
-  .hw__cap{font-size:max(8.5px, calc(11 * var(--u))); padding-top:calc(5 * var(--u)); gap:calc(8 * var(--u))}
+  .hw__cap{font-size:max(11px, calc(11 * var(--t))); padding-top:calc(5 * var(--u)); gap:calc(8 * var(--u))}
 
-  .work-intro{font-size:calc(14.5 * var(--u)); margin-bottom:calc(22 * var(--u))}
+  .work-intro{font-size:calc(14.5 * var(--t)); margin-bottom:calc(22 * var(--u))}
 
   .project{padding:calc(40 * var(--u)) 0}
   .project__grid{grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr); gap:calc(40 * var(--u))}
   .project__grid--flip{grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr)}
-  .project h3{font-size:calc(26 * var(--u)); margin-bottom:calc(6 * var(--u))}
-  .project__sub{font-size:calc(15 * var(--u)); margin-bottom:calc(16 * var(--u))}
+  .project h3{font-size:calc(26 * var(--t)); margin-bottom:calc(6 * var(--u))}
+  .project__sub{font-size:calc(15 * var(--t)); margin-bottom:calc(16 * var(--u))}
   .brief{margin-bottom:calc(20 * var(--u))}
   .brief div{grid-template-columns:8.5em minmax(0,1fr); gap:calc(14 * var(--u)); padding:calc(8 * var(--u)) 0}
-  .brief dt{font-size:max(8.5px, calc(10.5 * var(--u))); padding-top:calc(3 * var(--u))}
-  .brief dd{font-size:calc(14.5 * var(--u))}
+  .brief dt{font-size:max(10.5px, calc(10.5 * var(--t))); padding-top:calc(3 * var(--u))}
+  .brief dd{font-size:calc(14.5 * var(--t))}
   .status::before{width:calc(8 * var(--u)); height:calc(8 * var(--u)); margin-right:calc(8 * var(--u))}
   .metrics{margin-bottom:calc(24 * var(--u))}
   .metrics div{padding:calc(11 * var(--u)) calc(14 * var(--u))}
-  .metrics dd{font-size:calc(20 * var(--u))}
-  .metrics dt{font-size:calc(12.5 * var(--u))}
+  .metrics dd{font-size:calc(20 * var(--t))}
+  .metrics dt{font-size:calc(12.5 * var(--t))}
   .details{margin-bottom:calc(22 * var(--u))}
-  .details h4{font-size:calc(15.5 * var(--u)); margin:calc(20 * var(--u)) 0 calc(4 * var(--u))}
-  .details p{font-size:calc(15 * var(--u)); margin-bottom:calc(10 * var(--u))}
+  .details h4{font-size:calc(15.5 * var(--t)); margin:calc(20 * var(--u)) 0 calc(4 * var(--u))}
+  .details p{font-size:calc(15 * var(--t)); margin-bottom:calc(10 * var(--u))}
   .tests{margin:calc(4 * var(--u)) 0 calc(14 * var(--u))}
-  .tests table{font-size:calc(13.5 * var(--u))}
-  .tests th{font-size:max(8.5px, calc(10.5 * var(--u))); padding:0 calc(14 * var(--u)) calc(6 * var(--u)) 0}
+  .tests table{font-size:calc(13.5 * var(--t))}
+  .tests th{font-size:max(10.5px, calc(10.5 * var(--t))); padding:0 calc(14 * var(--u)) calc(6 * var(--u)) 0}
   .tests td{padding:calc(6 * var(--u)) calc(12 * var(--u)) calc(6 * var(--u)) 0}
   .configs{gap:calc(14 * var(--u)); margin:calc(4 * var(--u)) 0 calc(12 * var(--u))}
   .configs > div{padding:calc(12 * var(--u)) calc(16 * var(--u))}
-  .configs p{font-size:calc(13.5 * var(--u))}
-  .configs .configs__title{font-size:max(8.5px, calc(10.5 * var(--u)))}
+  .configs p{font-size:calc(13.5 * var(--t))}
+  .configs .configs__title{font-size:max(10.5px, calc(10.5 * var(--t)))}
   .project__media-stack{gap:calc(12 * var(--u)); top:calc(var(--header-h) + calc(20 * var(--u)))}
   .project__grid > .project__media{top:calc(var(--header-h) + calc(20 * var(--u)))}
   .media--contain img{padding:calc(28 * var(--u))}
-  .project__media figcaption{font-size:max(8.5px, calc(11 * var(--u))); padding:calc(8 * var(--u)) calc(12 * var(--u))}
+  .project__media figcaption{font-size:max(11px, calc(11 * var(--t))); padding:calc(8 * var(--u)) calc(12 * var(--u))}
 
   .experience{padding:calc(52 * var(--u)) 0 calc(16 * var(--u))}
-  .block-title{font-size:calc(26 * var(--u)); margin-bottom:calc(20 * var(--u))}
+  .block-title{font-size:calc(26 * var(--t)); margin-bottom:calc(20 * var(--u))}
   .roles li{grid-template-columns:10em minmax(0,1fr); gap:calc(6 * var(--u)) calc(32 * var(--u)); padding:calc(16 * var(--u)) 0}
-  .roles__when{font-size:calc(12 * var(--u))}
-  .roles h3{font-size:calc(16.5 * var(--u))}
-  .roles__where{font-size:calc(11.5 * var(--u)); margin:calc(2 * var(--u)) 0 calc(6 * var(--u))}
-  .roles li p:last-child{font-size:calc(14.5 * var(--u))}
+  .roles__when{font-size:calc(12 * var(--t))}
+  .roles h3{font-size:calc(16.5 * var(--t))}
+  .roles__where{font-size:max(11px, calc(11.5 * var(--t))); margin:calc(2 * var(--u)) 0 calc(6 * var(--u))}
+  .roles li p:last-child{font-size:calc(14.5 * var(--t))}
 
   .approach{padding:calc(52 * var(--u)) 0 calc(64 * var(--u))}
   .approach__grid{gap:calc(40 * var(--u))}
-  .approach h2{font-size:calc(31 * var(--u))}
-  .approach__lede{font-size:calc(15 * var(--u)); margin-top:calc(14 * var(--u))}
-  .approach__h{font-size:max(8.5px, calc(11 * var(--u))); margin:calc(6 * var(--u)) 0 calc(10 * var(--u))}
-  .transfer li{font-size:calc(14.5 * var(--u)); padding:calc(10 * var(--u)) 0}
-  .transfer a{font-size:calc(12 * var(--u))}
-  .tools{font-size:max(8.5px, calc(11 * var(--u))); margin-top:calc(18 * var(--u)); gap:calc(8 * var(--u))}
+  .approach h2{font-size:calc(31 * var(--t))}
+  .approach__lede{font-size:calc(15 * var(--t)); margin-top:calc(14 * var(--u))}
+  .approach__h{font-size:max(11px, calc(11 * var(--t))); margin:calc(6 * var(--u)) 0 calc(10 * var(--u))}
+  .transfer li{font-size:calc(14.5 * var(--t)); padding:calc(10 * var(--u)) 0}
+  .transfer a{font-size:calc(12 * var(--t))}
+  .tools{font-size:max(11px, calc(11 * var(--t))); margin-top:calc(18 * var(--u)); gap:calc(8 * var(--u))}
   .tools span{padding:calc(4 * var(--u)) calc(9 * var(--u))}
 
   .closing{padding:calc(56 * var(--u)) 0}
   .closing__grid{gap:calc(48 * var(--u))}
-  .closing h2{font-size:calc(31 * var(--u)); margin-bottom:calc(22 * var(--u))}
-  .closing__contact{font-size:calc(13 * var(--u)); line-height:2}
+  .closing h2{font-size:calc(31 * var(--t)); margin-bottom:calc(22 * var(--u))}
+  .closing__contact{font-size:calc(13 * var(--t)); line-height:2}
 
-  .site-footer{font-size:calc(11.5 * var(--u)); padding:calc(20 * var(--u)) 0 calc(48 * var(--u))}
+  .site-footer{font-size:max(11px, calc(11.5 * var(--t))); padding:calc(20 * var(--u)) 0 calc(48 * var(--u))}
 }
 
 @media (prefers-reduced-motion:reduce){

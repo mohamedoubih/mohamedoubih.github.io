@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FD-11 Enclosure · Mohamed Oubih</title>
+<meta name="description" content="Animated assembly of the 6 g FD-11 radiosonde enclosure: how the board is held in the lower shell, how the cover clips on over the sensor flex, and what carries the load in flight.">
+<link rel="canonical" href="https://mohamedoubih.github.io/fd11-enclosure/">
+
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://mohamedoubih.github.io/fd11-enclosure/">
+<meta property="og:site_name" content="Mohamed Oubih">
+<meta property="og:title" content="How the 6 g FD-11 enclosure holds together">
+<meta property="og:description" content="Board retention, snap clips and the load path of a 0.6 mm thin-wall SLA housing that carries a 20 g radiosonde from its tether ring.">
+<meta property="og:image" content="https://mohamedoubih.github.io/img/fd11-enclosure-og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="The FD-11 radiosonde hanging from its tether ring, cover shown transparent, with the load path through the lower shell highlighted.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://mohamedoubih.github.io/img/fd11-enclosure-og.jpg">
+
+<link rel="icon" href="data:,">
+<meta name="theme-color" content="#faf9f6">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<script>if (/[?&]embed\b/.test(location.search)) document.documentElement.classList.add('is-embed');</script>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap top__row">
+    <a class="logo" href="../">Mohamed Oubih</a>
+    <nav class="top__nav" aria-label="Site">
+      <a href="../#fd-11">Enclosure project</a>
+      <a href="../pdf/enclosure.pdf" target="_blank" rel="noopener">Case study PDF ↗</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap" id="main">
+
+  <div class="intro">
+    <p class="eyebrow">04 · FD-11 radiosonde enclosure</p>
+    <h1>How the 6 g enclosure holds together</h1>
+    <p class="lede">
+      The board is neither screwed nor glued in. It tucks under two lips in the lower shell, drops onto four corner
+      rests, and a hook bent back by hand springs over its edge. The cover slides down the sensor flex and snaps on with
+      four clips. In flight the whole 20 g probe hangs from the ring on the lower shell, so the same 0.6 mm part that
+      holds the board carries the load.
+    </p>
+  </div>
+
+  <div class="stage">
+    <div class="player">
+      <div class="screen">
+        <div class="viewer" id="viewer" tabindex="0" aria-label="3D animation of the FD-11 enclosure: the board, flex and cell go into the lower shell, the cover clips on, and the probe hangs from its ring. Space plays or pauses; the arrow keys step through the sequence.">
+          <canvas id="scene"></canvas>
+          <svg class="leaders" id="leaders" aria-hidden="true"></svg>
+          <div class="labels" id="labels" aria-hidden="true"></div>
+          <div class="loading" id="loading" role="status">
+            <span class="loading__spin" aria-hidden="true"></span>
+            <span class="loading__text">Loading the enclosure model…</span>
+          </div>
+          <div class="hud" aria-hidden="true">
+            <div>
+              <p class="hud__where" id="hudWhere">Lower shell</p>
+              <p class="hud__title"><b id="hudNum">01</b><span id="hudTitle">Board</span></p>
+            </div>
+          </div>
+          <p class="hint" aria-hidden="true">Drag to orbit · Ctrl + scroll to zoom</p>
+          <button class="reset" id="btnReset" type="button">Reset view</button>
+          <div class="fallback">
+            <p id="fallbackTxt">This animation needs WebGL, which this browser has turned off. The steps are listed alongside, and the
+              <a href="../pdf/enclosure.pdf">case study PDF</a> has the drawings.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="controls" id="controls">
+        <button class="ctl ctl--play" id="btnPlay" type="button" aria-label="Play"></button>
+        <button class="ctl" id="btnPrev" type="button" aria-label="Previous step">
+          <svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path d="M3 2.5h1.8v11H3zM13 2.5v11L5.5 8z" fill="currentColor"/></svg>
+        </button>
+        <button class="ctl" id="btnNext" type="button" aria-label="Next step">
+          <svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path d="M11.2 2.5H13v11h-1.8zM3 2.5v11L10.5 8z" fill="currentColor"/></svg>
+        </button>
+        <div class="timeline">
+          <input type="range" id="scrub" min="0" max="33" step="0.01" value="0" aria-label="Animation time">
+          <div class="ticks" id="ticks" aria-hidden="true"></div>
+        </div>
+        <span class="time" id="time">0:00 / 0:32</span>
+        <button class="ctl ctl--text" id="btnSpeed" type="button" aria-label="Playback speed">1×</button>
+      </div>
+    </div>
+
+    <aside class="side" aria-label="Sequence">
+      <h2 class="side__h">The sequence</h2>
+      <ol class="steps">
+        <li data-where="Lower shell">
+          <button type="button"><span class="steps__n">01</span><span class="steps__t">Board</span><span class="steps__w">Lower shell</span></button>
+          <p>The hook at the ring end is bent back with a fingernail or a tool. The board's far end tucks under two fixed lips, the board drops onto four corner rests, and the hook springs back over its edge. No screws, no adhesive.</p>
+        </li>
+        <li data-where="Board">
+          <button type="button"><span class="steps__n">02</span><span class="steps__t">Sensor flex and cell</span><span class="steps__w">Board</span></button>
+          <p>The sensor flex plugs straight up into its connector, and the AAA cell clips into the two holders on the board.</p>
+        </li>
+        <li data-where="Four snap clips">
+          <button type="button"><span class="steps__n">03</span><span class="steps__t">Cover</span><span class="steps__w">Four snap clips</span></button>
+          <p>The flex's sensor end is fed out through the slot in the cover, and the cover slides down the flex. At each of the four clips, a slim bar above a window in the lower shell flexes inward over the cover's barb and springs back above it.</p>
+        </li>
+        <li data-where="Hanging from the ring">
+          <button type="button"><span class="steps__n">04</span><span class="steps__t">In flight</span><span class="steps__w">Hanging from the ring</span></button>
+          <p>The probe hangs from the balloon's thread by the ring on the lower shell. The flex leaves the cover square to its face and sags under its own weight in an even arc, out in free air, away from the electronics.</p>
+        </li>
+        <li data-where="Lower shell, outside">
+          <button type="button"><span class="steps__n">05</span><span class="steps__t">Button and LED</span><span class="steps__w">Lower shell, outside</span></button>
+          <p>Turned about the thread, the floor of the lower shell shows the power button, a disc in the 0.6 mm wall that is pressed onto the board's tact switch, and the window for the status LED.</p>
+        </li>
+        <li data-where="20 g on one ring">
+          <button type="button"><span class="steps__n">06</span><span class="steps__t">Load path</span><span class="steps__w">20 g on one ring</span></button>
+          <p>Everything, 20 g in all, hangs from the ring. The board and cell rest on the lower shell's far end, so the lower shell carries their weight up to the ring; the cover hangs on its four clips.</p>
+        </li>
+      </ol>
+    </aside>
+  </div>
+
+  <section class="notes" aria-labelledby="numbersTitle">
+    <div>
+      <h2 id="numbersTitle">The numbers behind it</h2>
+      <dl class="facts">
+        <div><dt>Enclosure mass, against an 8 g budget</dt><dd>6 g</dd></div>
+        <div><dt>Nominal wall, 0.4 mm at the clips</dt><dd>0.6 mm</dd></div>
+        <div><dt>Flight assembly hanging from the ring</dt><dd>20 g</dd></div>
+        <div><dt>Flights on the frozen design</dt><dd>53</dd></div>
+      </dl>
+    </div>
+    <div>
+      <h2>About this animation</h2>
+      <ul>
+        <li>Built from the FD-11 1.G CAD: the flight shells (March 2026) and the board assembly. The small hole for the EMC test cable, which only the test shells have, is left out.</li>
+        <li>The hook and clip deflections come from the interference in the CAD: the hook's top moves about 2 mm so its lip clears the board, and each clip bar moves 0.75 mm to pass the barb. The bending shapes are drawn, not computed.</li>
+        <li>The arrows show where the load goes, not how it is distributed; no FEA was run on this part.</li>
+        <li>To open the shell, the tabs below the clip windows are squeezed one side at a time, which pulls the bars off the barbs.</li>
+      </ul>
+    </div>
+  </section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    Project Picoballoon, Noove s.r.o., 2025–26 · published with permission ·
+    <a href="../#fd-11">Back to the portfolio</a>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/three@0.149.0/build/three.min.js"
+        integrity="sha384-RRHfJ6w1mTlKUBMYT/hvnRiOzEB/vyRV3DrQOseb6oYfvaZSfdd0byS4bHps0k2R"
+        crossorigin="anonymous"></script>
+<script src="app.js"></script>
+
+<script data-goatcounter="https://momoportfolio.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+
+</body>
+</html>
