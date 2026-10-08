@@ -235,6 +235,7 @@ b,strong{font-weight:600}
 .work__key dt{display:flex; flex-wrap:wrap; gap:6px; align-content:start}
 .work__key dd{margin:0; color:var(--graphite); line-height:1.5}
 .work__org{display:block; color:var(--ink); font-weight:600; margin-bottom:2px}
+.work__note{grid-column:2; margin:0; font-size:.875rem; line-height:1.5; color:var(--graphite); max-width:40em}
 .work__years{font-family:var(--mono); font-size:.875rem; font-weight:400; color:var(--graphite); margin-left:10px}
 
 /* ---------- project ---------- */
@@ -395,6 +396,7 @@ b,strong{font-weight:600}
   border-bottom:1px solid var(--rule); font-size:.9375rem;
 }
 .anim-modal__title{flex:1; margin:0; font-weight:600}
+.anim-modal__note{margin:0; font-size:.875rem; color:var(--graphite)}
 .anim-modal__out{
   color:var(--copper-ink); text-decoration:underline; text-decoration-thickness:1px; text-underline-offset:.24em;
   text-decoration-color:color-mix(in srgb, currentColor 38%, transparent);
@@ -488,6 +490,7 @@ html.modal-open{overflow:hidden}
   .bench{grid-template-columns:repeat(3,minmax(0,1fr))}
   .bench__item--wide{grid-column:1 / -1; order:-1}
   .work__head{grid-template-columns:minmax(0,1fr); gap:16px}
+  .work__note{grid-column:auto}
   .project__grid,.project__grid--flip{grid-template-columns:minmax(0,1fr); gap:32px}
   .project__grid--flip > .project__body{order:0}
   .project__body{max-width:none}
@@ -518,6 +521,9 @@ html.modal-open{overflow:hidden}
   .anim-modal{width:100vw; height:100vh; height:100dvh; max-height:none; border:0}
   .anim-modal__title{display:none}
   .anim-modal__bar{justify-content:flex-end}
+  .anim-modal__note{margin-right:auto; font-size:.8125rem; line-height:1.35}
+  .anim-modal__out{white-space:nowrap}
+  .anim-modal__bar{gap:14px}
 }
 
 @media (max-width:620px){

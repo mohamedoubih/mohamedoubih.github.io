@@ -29,7 +29,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="preload" as="image" href="img/hw-ams-cleanroom.jpg" fetchpriority="high">
-<link rel="stylesheet" href="css/style.css?v=20261014">
+<link rel="stylesheet" href="css/style.css?v=20261015">
 </head>
 <body>
 
@@ -142,6 +142,7 @@
           <dd><span class="work__org">University of Perugia <span class="work__years">2022–23</span></span> My MSc thesis and research fellowship.</dd>
         </div>
       </dl>
+      <p class="work__note">The 3D animations are illustrative. They explain how each assembly goes together and works; they are not simulation results.</p>
     </div>
 
     <!-- 01 — Pressure-relief valve -->
@@ -338,7 +339,7 @@
             <div><dt>Status</dt><dd><span class="status status--use">Manufactured and used</span> for Layer 0 integration in the clean room. Positioning accuracy comes from analysis; the documented work includes no measured positioning result.</dd></div>
           </dl>
 
-          <p class="update"><span class="update__label">Update, October 2026</span> The new Layer-0 tracker has passed environmental testing and completed a <span class="nowrap">proton-beam</span> scan at CERN. Its installation on the ISS is planned for 2027.</p>
+          <p class="update"><span class="update__label">Update, October 2026</span> Layer-0 has passed vibration and thermal-vacuum testing and a <span class="nowrap">proton-beam</span> scan at CERN (June–July 2026). Launch to the ISS on a SpaceX Dragon is planned for April 2027, with spacewalks to connect it in May. <a class="link" href="https://home.cern/final-tests-for-the-ams-upgrade-before-spaceflight/" target="_blank" rel="noopener">CERN news <span class="ext" aria-hidden="true">↗</span></a></p>
 
           <dl class="metrics metrics--2">
             <div><dt>Calculated worst-case positioning error (allowance 100&nbsp;µm)</dt><dd>93<span class="unit">µm</span></dd></div>
@@ -403,7 +404,7 @@
                      muted loop playsinline preload="none" data-autoplay aria-hidden="true"></video>
               <span class="anim-badge">Play the interactive 3D <span class="anim-badge__time">3 min</span></span>
             </a>
-            <figcaption>The integration sequence in 3D, from locating the QLCS to Layer 0 on AMS-02. My design: Stations 1–2 and the positioning jigs; Station 3 and AMS-02 are shown for context.</figcaption>
+            <figcaption>The integration sequence in 3D, from locating the QLCS to Layer 0 on AMS-02. Stations 1–2 and the positioning jigs are my design, shown simplified. Station 3 and the AMS-02 detector are approximations for context and do not look exactly like the manufactured hardware. The animation explains the integration steps, not exact geometry.</figcaption>
           </figure>
           <figure class="project__media media--landscape">
             <img src="img/hw-ams-station1.jpg" width="1118" height="773" loading="lazy" decoding="async"
@@ -594,6 +595,7 @@
 <dialog class="anim-modal" id="animModal" aria-labelledby="animModalTitle">
   <div class="anim-modal__bar">
     <p class="anim-modal__title" id="animModalTitle">Interactive 3D</p>
+    <p class="anim-modal__note">Illustrative animation, not a simulation</p>
     <a class="anim-modal__out" href="ams02-transfer/" target="_blank" rel="noopener">Open full page <span class="ext" aria-hidden="true">↗</span></a>
     <button class="anim-modal__close" type="button" aria-label="Close the animation">✕</button>
   </div>
