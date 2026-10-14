@@ -1,7 +1,8 @@
 /* FD-11 radiosonde enclosure: how the board is held in the lower shell, how the cover clips on over the
    sensor flex, and what carries the load in flight.
    three.js r149 (classic build). fd11.glb is the 1.G CAD in its own frame (metres, converted to mm here):
-   x = thickness (cover side +x), y = width, z = length (tether ring at +z). The probe group turns that frame
+   x = thickness (cover side +x), y = width, z = length (tether ring at +z). The shells, cell holders and flex
+   connector are the CAD parts; the board is a plain block of its outline and the flex a plain strip. The probe group turns that frame
    into the bench view (opening up) or the flight attitude (ring up).
    Every frame is computed from the timeline time t, so playing, scrubbing and stepping agree. */
 (function () {
@@ -211,9 +212,7 @@
   const M = {
     lower: mat({ color: 0xd3d6d9, roughness: 0.62, metalness: 0 }, 0x7d8ea3, true),
     upper: mat({ color: 0xe9e7e1, roughness: 0.6, metalness: 0 }, 0xcf8d74),
-    pcb: mat({ color: 0x1d1f22, roughness: 0.5, metalness: 0.05 }, 0x2f5e45),
-    dark: mat({ color: 0x2b2d31, roughness: 0.45, metalness: 0.1 }, 0x45484e),
-    light: mat({ color: 0xb3ad9f, roughness: 0.5, metalness: 0.1 }, 0x9c9584),
+    board: mat({ color: 0x1d1f22, roughness: 0.5, metalness: 0.05 }, 0x2f5e45),
     metal: mat({ color: 0xcfd2d6, roughness: 0.3, metalness: 0.85 }, 0x9aa0a8),
     conn: mat({ color: 0xd9cdb4, roughness: 0.55, metalness: 0 }, 0xb3a37f),
     cell: mat({ color: 0x8b9097, roughness: 0.32, metalness: 0.6 }, 0x59606a, false, true),
@@ -221,7 +220,7 @@
     tool: mat({ color: 0x3b3f46, roughness: 0.35, metalness: 0.6 }, 0x30343a),
   };
   const magFog = new THREE.Fog(BG, 1, 2);
-  const PART_MAT = { lower: 'lower', upper: 'upper', pcb: 'pcb', comps_dark: 'dark', comps_light: 'light', can: 'metal', holder_neg: 'metal', holder_pos: 'metal', spring: 'metal', fpc: 'conn', battery: 'cell', flex: 'flex' };
+  const PART_MAT = { lower: 'lower', upper: 'upper', board: 'board', cell_holder_1: 'metal', cell_holder_2: 'metal', connector: 'conn', flex: 'flex' };
   const edgeMat = new THREE.LineBasicMaterial({ color: 0x1a1c20, transparent: true, opacity: 0.26 });
   const edgeMatCover = new THREE.LineBasicMaterial({ color: 0x1a1c20, transparent: true, opacity: 0.26 });
 
@@ -306,13 +305,13 @@
     const lower = mesh('lower', probe);
     const lowerEdges = new THREE.LineSegments(sharpEdges(GEO.lower, 32), edgeMat);
     probe.add(lowerEdges);
-    // board and what is soldered to it, pivoting about the far top edge of the board
+    // board with its cell holders and flex connector, pivoting about the far top edge of the board
     const PIVOT = new THREE.Vector3(0, 0, -40.2);
     const boardG = new THREE.Group(), boardIn = new THREE.Group();
     boardIn.position.copy(PIVOT).negate();
     boardG.add(boardIn);
     probe.add(boardG);
-    ['pcb', 'comps_dark', 'comps_light', 'can', 'holder_neg', 'holder_pos', 'fpc'].forEach(n => mesh(n, boardIn));
+    ['board', 'cell_holder_1', 'cell_holder_2', 'connector'].forEach(n => mesh(n, boardIn));
     // conical coil spring of the negative contact, drawn so it can be compressed without flattening the wire
     const SPR = { ax: 5.35, R0: 2.45, R1: 1.45, r: 0.17, turns: 4.25 };
     const springMesh = new THREE.Mesh(new THREE.BufferGeometry(), M.metal);
@@ -465,7 +464,7 @@
       S.key = '';
       return S;
     }
-    const armsNeg = armSet(GEO.holder_neg), armsPos = armSet(GEO.holder_pos);
+    const armsNeg = armSet(GEO.cell_holder_1), armsPos = armSet(GEO.cell_holder_2);
     function pushArms(S, axisAt, c, zLo, zHi, on) {
       const key = on ? axisAt(0).toFixed(4) + '|' + c.toFixed(5) + '|' + zLo.toFixed(3) : 'off';
       if (key === S.key) return false;
@@ -498,7 +497,7 @@
       S.p.needsUpdate = true;
       return true;
     }
-    const leaf = contactSet(GEO.holder_pos, (x, y, z) => (Math.abs(y) < 2.6 && z > 31.6 && x > 0.7 ? Math.min(1.6, (x - 0.6) / 5.4) : 0));
+    const leaf = contactSet(GEO.cell_holder_2, (x, y, z) => (Math.abs(y) < 2.6 && z > 31.6 && x > 0.7 ? Math.min(1.6, (x - 0.6) / 5.4) : 0));
     function bendSet(S, amount, apply) {
       if (Math.abs(amount - S.last) < 1e-4) return false;
       S.last = amount;
@@ -517,8 +516,8 @@
         bendSet(leaf, (px + CELL.len * s - CELL.R * c > 10.5 ? 0 : Math.max(0, pz + CELL.len * c + 3 * CELL.R * s - LEAF_APEX)),
           (p, r, i, w, e) => { p[3 * i + 2] = r[3 * i + 2] + e * w; }),
       ];
-      if (changed[0]) GEO.holder_neg.computeVertexNormals();
-      if (changed[1] || changed[2]) GEO.holder_pos.computeVertexNormals();
+      if (changed[0]) GEO.cell_holder_1.computeVertexNormals();
+      if (changed[1] || changed[2]) GEO.cell_holder_2.computeVertexNormals();
       setSpring(lift > 3 ? SPRING.free : Math.min(SPRING.free, Math.max(0.36, pz - SPRING.base)));
     }
 
